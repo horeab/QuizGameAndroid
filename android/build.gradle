@@ -11,11 +11,11 @@ android {
             res.srcDirs = ['res']
             jniLibs.srcDirs = ['libs']
         }
-        skelgame {
-            assets.srcDirs = ['assets/tournament_resources/implementations/skelgame', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        geoquiz {
+            assets.srcDirs = ['assets/tournament_resources/implementations/quizgame', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
-        skelgamePro {
-            assets.srcDirs = ['assets/tournament_resources/implementations/skelgame', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        geoquizPro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/quizgame', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
     }
     lintOptions {
@@ -54,20 +54,20 @@ android {
     flavorDimensions "game"
     productFlavors {
 /////////////////////////////////////////////////////////////////////////////
-        skelgame {
-            applicationIdSuffix ".skelgame"
+        geoquiz {
+            applicationIdSuffix ".geoquiz"
             versionCode 1
             versionName "1.00"
             dimension "game"
-            manifestPlaceholders = [appIcon: "@drawable/skelgame_icon"]
+            manifestPlaceholders = [appIcon: "@drawable/geoquiz_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
-        skelgamePro {
-            applicationIdSuffix ".skelgamepro"
+        geoquizPro {
+            applicationIdSuffix ".geoquizpro"
             versionCode 1
             versionName "1.00"
             dimension "game"
-            manifestPlaceholders = [appIcon: "@drawable/skelgamepro_icon"]
+            manifestPlaceholders = [appIcon: "@drawable/geoquizpro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }

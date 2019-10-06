@@ -2,20 +2,21 @@ package com.habapps;
 
 import org.robovm.apple.foundation.NSBundle;
 
-import libgdx.constants.GameIdEnum;
+import libgdx.implementations.skelgame.GameIdEnum;
+
 
 public enum GameProperties {
 
-    skelgame(
-            GameIdEnum.skelgame,
+    geoquiz(
+            GameIdEnum.quizgame,
             NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
             NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
-            "appId",
-            "bannerId",
-            "interId",
-            "rewardId",
-            "iosAppstoreId",
-            "proVersionStoreAppId");
+            "ca-app-pub-9432399956064043~7758141729",
+            "ca-app-pub-9432399956064043/8792840034",
+            "ca-app-pub-9432399956064043/9120637934",
+            "ca-app-pub-9432399956064043/7479758360",
+            "1480827008",
+            "1480827008");
 
     private GameIdEnum gameIdEnum;
     private String language;

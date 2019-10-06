@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">World Geography Game</string>
+    <string name="language">en</string>
+    <string name="game_id">quizgame</string>
+
+    <string name="admob_banner_id">ca-app-pub-9432399956064043/4250141552</string>
+    <string name="admob_inter_id">ca-app-pub-9432399956064043/1623978214</string>
+    <string name="admob_video_id">ca-app-pub-9432399956064043/6684733209</string>
+    <string name="admob_app_id">ca-app-pub-9432399956064043~7671330055</string>
+
+    <bool name="google_facebook_login_enabled">false</bool>
+    <bool name="isPro">false</bool>
+</resources>
