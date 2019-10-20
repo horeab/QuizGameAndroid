@@ -17,6 +17,12 @@ android {
         geoquizPro {
             assets.srcDirs = ['assets/tournament_resources/implementations/quizgame', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        hangman {
+            assets.srcDirs = ['assets/tournament_resources/implementations/hangman', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        hangmanPro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/hangman', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -68,6 +74,22 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/geoquizpro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        hangman {
+            applicationIdSuffix ".hangman"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/hangman_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        hangmanPro {
+            applicationIdSuffix ".hangmanpro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/hangmanpro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }
