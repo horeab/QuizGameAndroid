@@ -29,10 +29,12 @@ public abstract class SubGameDependencyManager {
     }
 
     public String getAllFontChars() {
-        String allChars = collectAllLabelChars() + allQuestionText();
+        String allChars = collectAllLabelChars() + allQuestionText() + Game.getInstance().getAppInfoService().getAppName();
         Set<String> resultSet = new HashSet<>();
         for (int i = 0; i < allChars.length(); i++) {
-            resultSet.add(Character.toString(allChars.charAt(i)));
+            String var = Character.toString(allChars.charAt(i));
+            resultSet.add(var.toLowerCase());
+            resultSet.add(var.toUpperCase());
         }
         return StringUtils.join(resultSet,"" );
     }

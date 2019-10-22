@@ -16,6 +16,11 @@ public enum MainGameLabel implements GameLabel {
     pro_version_info,
     pro_version_info_unlock,
     pro_version_download,
+    l_level,
+    l_level_record,
+    l_score,
+    l_score_record,
+    l_new_game,
 
     guest,
 

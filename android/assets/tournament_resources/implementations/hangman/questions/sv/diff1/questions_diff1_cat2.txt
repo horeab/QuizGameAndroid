@@ -1,20 +1,18 @@
-Tulip
-Onion
-Cherries
-Pumpkin
-Strawberry
-Coffee
-Dandelion
-Pineapple
-Peanuts
-Nettle
-Apricot
-Coconut
-Grapefruit
-Watermelon
+Tulpan
+Lök
+körsbär
+Pumpa
+Kaffe
+Maskros
+Ananas
+jordnötter
+Nässla
+Aprikos
+Kokos
+Grapefrukt
+Vattenmelon
 Melon
-Sour cherries
-Mint
-Peppers
-Cabbage
-Peas
+Sura körsbär
+Mynta
+Kål
+ärtor

@@ -2,10 +2,12 @@ package libgdx.screens.implementations.hangman;
 
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
 import libgdx.campaign.CampaignGame;
 import libgdx.campaign.CampaignLevel;
 import libgdx.campaign.CampaignService;
 import libgdx.controls.button.MyButton;
+import libgdx.controls.button.builders.BackButtonBuilder;
 import libgdx.controls.label.MyWrappedLabel;
 import libgdx.implementations.geoquiz.QuizGame;
 import libgdx.implementations.hangman.HangmanGame;
@@ -36,18 +38,26 @@ public class HangmanGameScreen extends GameScreen<HangmanScreenManager> {
 
     @Override
     public void buildStage() {
+        System.out.println(gameContext.getCurrentUserGameUser().getGameQuestionInfo().getQuestion().getQuestionString());
         allTable = new Table();
         allTable.setFillParent(true);
-        allTable.add(new HangmanHeaderCreator().createHeaderTable(gameContext)).row();
+        float verticalGeneralMarginDimen = MainDimen.vertical_general_margin.getDimen();
+        allTable.add(new HangmanHeaderCreator().createHeaderTable(gameContext, hangmanQuestionContainerCreatorService.getHintButtons(), hangmanQuestionContainerCreatorService.createHintButtonsTable())).padTop(verticalGeneralMarginDimen).row();
         Table wordTable = new Table();
         wordTable.setName(HangmanRefreshQuestionDisplayService.ACTOR_NAME_HANGMAN_WORD_TABLE);
         Table image = new Table();
         image.setName(HangmanRefreshQuestionDisplayService.ACTOR_NAME_HANGMAN_IMAGE);
-        allTable.add(wordTable).row();
-        allTable.add(image).growY().row();
-        allTable.add(new HangmanQuestionContainerCreatorService(gameContext, this).createSquareAnswerOptionsTable(new ArrayList<>(hangmanQuestionContainerCreatorService.getAllAnswerButtons().values())));
+        allTable.add(wordTable).growY().row();
+        allTable.add(image)
+                .padTop(verticalGeneralMarginDimen)
+                .height(ScreenDimensionsManager.getScreenHeightValue(35))
+                .width(ScreenDimensionsManager.getScreenWidthValue(55))
+                .row();
+        allTable.add(new HangmanQuestionContainerCreatorService(gameContext, this).createSquareAnswerOptionsTable(new ArrayList<>(hangmanQuestionContainerCreatorService.getAllAnswerButtons().values())))
+                .growY();
         addActor(allTable);
         hangmanQuestionContainerCreatorService.processGameInfo(gameContext.getCurrentUserGameUser().getGameQuestionInfo());
+        new BackButtonBuilder().addHoverBackButton(this);
     }
 
     public void goToNextQuestionScreen() {
@@ -68,7 +78,7 @@ public class HangmanGameScreen extends GameScreen<HangmanScreenManager> {
 
     @Override
     public void onBackKeyPress() {
-        screenManager.showMainScreen();
+        screenManager.showCampaignScreen();
     }
 
     public void executeLevelFinished() {
@@ -79,8 +89,8 @@ public class HangmanGameScreen extends GameScreen<HangmanScreenManager> {
         }
         if (new SinglePlayerLevelFinishedService().isGameFailed(gameContext.getCurrentUserGameUser())) {
             new HangmanLevelFinishedPopup(this, campaignLevel, gameContext).addToPopupManager();
-        }else {
-            screenManager.showMainScreen();
+        } else {
+            screenManager.showCampaignScreen();
         }
     }
 }

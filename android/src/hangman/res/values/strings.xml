@@ -3,12 +3,12 @@
 
     <string name="app_name">Hangman</string>
     <string name="language">en</string>
-    <string name="game_id">skelgame</string>
+    <string name="game_id">hangman</string>
 
-    <string name="admob_banner_id">xxx</string>
-    <string name="admob_inter_id">xxx</string>
-    <string name="admob_video_id">xxx</string>
-    <string name="admob_app_id">xxx</string>
+    <string name="admob_banner_id">ca-app-pub-9432399956064043/9813301292</string>
+    <string name="admob_inter_id">ca-app-pub-9432399956064043/2722592418</string>
+    <string name="admob_video_id">ca-app-pub-9432399956064043/7783347401</string>
+    <string name="admob_app_id">ca-app-pub-9432399956064043~8343758219</string>
 
     <bool name="google_facebook_login_enabled">false</bool>
     <bool name="isPro">false</bool>

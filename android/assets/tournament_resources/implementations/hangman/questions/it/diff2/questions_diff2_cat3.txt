@@ -1,19 +1,7 @@
-tritare
-colino
-fornello
-colapiatti
-detersivo per i piatti
-spremiaglio
-secchio di ghiaccio
-vaso
-brocca
-misurini
-tritacarne
-batticarne
-opener
-Pan
-piatto
-piatto
-perno rotante
-piattino
-setacciatore
+congelatore
+padella
+bollitore
+tavolo
+tostapane
+Colino
+Spatola

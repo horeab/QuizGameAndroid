@@ -1,19 +1,11 @@
-Alpaca
-Armadillo
-Chinchilla
-Echidna
-Raccoon
-Egret
-Tasmanian devil
-Komodo dragon
+Alpacka
+Bälta
+Tasmansk djävul
+Komodovaran
 Barracuda
-Magpie
-Manatee
-Prairie dog
-Starling
-Tapir
+Skata
+Präriehund
+Stare
 Tarsier
-Lemur
 Meerkat
-Guineafowl
-Possum
+Pärlhöns

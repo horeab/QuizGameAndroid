@@ -20,8 +20,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.habapps.service.SkelGameAppInfoServiceImpl;
 
 import libgdx.game.Game;
-import libgdx.implementations.geoquiz.QuizGame;
-import libgdx.implementations.skelgame.SkelGame;
+import libgdx.implementations.hangman.HangmanGame;
 import libgdx.utils.startgame.test.DefaultBillingService;
 import libgdx.utils.startgame.test.DefaultFacebookService;
 
@@ -77,7 +76,7 @@ public class AndroidLauncher extends AndroidApplication {
 
     private View createGameView() {
         return initializeForView(
-                new QuizGame(
+                new HangmanGame(
                         new DefaultFacebookService(),
                         new DefaultBillingService(),
                         appInfoService),

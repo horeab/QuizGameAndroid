@@ -1,20 +1,17 @@
-Beaver
-King cobra
-Flamingo
-Albatross
-Seagull
-Jackal
-Lark
-Loris
-Lobster
-Marten
-Walrus
-Mink
-Bison
-Porcupine
-Red Panda
-Salamander
-Stingray
-Nightingale
-Otter
-Herring
+bobor
+Kráľ kobra
+plameniak
+albatros
+čajka
+šakal
+škovránok
+homár
+kuna
+mrož
+norok
+bizón
+dikobraz
+Červená Panda
+slávik
+vydra
+sleď
