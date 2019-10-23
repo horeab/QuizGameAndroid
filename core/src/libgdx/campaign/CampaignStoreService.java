@@ -23,7 +23,10 @@ public class CampaignStoreService {
     }
 
     public void reset() {
+
+        int maxStars = getAllStarsWon();
         this.preferencesService.clear();
+        updateAllStarsWon(maxStars);
     }
 
     private String formCampaignLevelKey(CampaignLevel campaignLevelEnum) {
