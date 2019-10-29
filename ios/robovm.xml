@@ -21,7 +21,7 @@
       <skipPngCrush>true</skipPngCrush>
     </resource>
     <resource>
-      <directory>../android/assets/tournament_resources/implementations/quizgame</directory>
+      <directory>../android/assets/tournament_resources/implementations/hangman</directory>
       <includes>
         <include>**</include>
       </includes>

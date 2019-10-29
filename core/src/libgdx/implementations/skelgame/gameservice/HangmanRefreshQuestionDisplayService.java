@@ -14,6 +14,7 @@ import libgdx.implementations.skelgame.question.GameQuestionInfo;
 import libgdx.resources.FontManager;
 import libgdx.resources.Res;
 import libgdx.screen.AbstractScreen;
+import libgdx.screens.implementations.hangman.HangmanGameScreen;
 import libgdx.utils.ScreenDimensionsManager;
 
 import org.apache.commons.lang3.StringUtils;
@@ -99,11 +100,11 @@ public class HangmanRefreshQuestionDisplayService extends RefreshQuestionDisplay
         Res imgName = Game.getInstance().getMainDependencyManager().createResourceService().getByName("h" + nrOfWrongLettersPressed);
         Image image = GraphicUtils.getImage(imgName);
         float hangmanImageDimen = GameDimen.side_hangman_image.getDimen() / 1;
-        image.setHeight(image.getHeight() / Float.valueOf(image.getWidth()) * hangmanImageDimen);
-        image.setWidth(hangmanImageDimen);
+        image.setHeight(HangmanGameScreen.getHangmanImgHeight());
+        image.setWidth(HangmanGameScreen.getHangmanImgWidth());
         Table table = (Table) abstractGameScreen.getRoot().findActor(ACTOR_NAME_HANGMAN_IMAGE);
         table.clearChildren();
-        table.add(image);
+        table.add(image).width(image.getWidth()).height(image.getHeight());
     }
 
     private float calculateLetterLabelWidth(float standardWidth, String hangmanWord) {

@@ -110,7 +110,7 @@ project(":ios") {
 
     robovm {
         iosSignIdentity = "Horea Bucerzan"
-        iosProvisioningProfile = "skelGameDistribution"
+        iosProvisioningProfile = "hangmanpro"
         iosSkipSigning = false
         archs = "thumbv7:arm64"
     }

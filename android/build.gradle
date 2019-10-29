@@ -23,6 +23,12 @@ android {
         hangmanPro {
             assets.srcDirs = ['assets/tournament_resources/implementations/hangman', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        kennstde {
+            assets.srcDirs = ['assets/tournament_resources/implementations/kennstde', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        kennstdePro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/kennstde', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -90,6 +96,22 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/hangmanpro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        kennstde {
+            applicationIdSuffix ".kennstde"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/kennstde_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        kennstdePro {
+            applicationIdSuffix ".kennstdepro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/kennstdepro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }
