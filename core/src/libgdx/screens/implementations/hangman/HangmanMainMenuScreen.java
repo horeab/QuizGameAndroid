@@ -93,7 +93,8 @@ public class HangmanMainMenuScreen extends AbstractScreen<HangmanScreenManager> 
             return 1.3f;
         } else if (appName.length() > 13) {
             return 1.7f;
-        } {
+        }
+        {
             return 2f;
         }
     }

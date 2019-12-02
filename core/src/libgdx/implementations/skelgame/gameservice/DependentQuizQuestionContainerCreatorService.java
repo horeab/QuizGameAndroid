@@ -1,5 +1,7 @@
 package libgdx.implementations.skelgame.gameservice;
 
+import java.util.Set;
+
 import libgdx.screens.GameScreen;
 
 public class DependentQuizQuestionContainerCreatorService extends QuizQuestionContainerCreatorService {
@@ -8,4 +10,7 @@ public class DependentQuizQuestionContainerCreatorService extends QuizQuestionCo
         super(gameContext, abstractGameScreen);
     }
 
+    @Override
+    protected void setContainerBackground() {
+    }
 }

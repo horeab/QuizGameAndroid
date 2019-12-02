@@ -1,6 +1,7 @@
 package libgdx.implementations.skelgame.gameservice;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
@@ -13,8 +14,11 @@ import libgdx.implementations.skelgame.GameDimen;
 import libgdx.implementations.skelgame.question.GameQuestionInfo;
 import libgdx.resources.FontManager;
 import libgdx.resources.Res;
+import libgdx.resources.dimen.Dimen;
+import libgdx.resources.dimen.MainDimen;
 import libgdx.screen.AbstractScreen;
 import libgdx.screens.implementations.hangman.HangmanGameScreen;
+import libgdx.utils.ActorPositionManager;
 import libgdx.utils.ScreenDimensionsManager;
 
 import org.apache.commons.lang3.StringUtils;
@@ -35,12 +39,14 @@ public class HangmanRefreshQuestionDisplayService extends RefreshQuestionDisplay
 
     @Override
     public void refreshQuestion(GameQuestionInfo gameQuestionInfo) {
-        try {
-            String hangmanWord = gameService.getHangmanWord(gameQuestionInfo.getQuestion().getQuestionString());
-            createHangmanWord(hangmanWord, gameQuestionInfo.getAnswerIds(), new HashSet<String>());
-            refreshHangManImg(gameService.getNrOfWrongAnswersPressed(gameQuestionInfo.getAnswerIds()));
-        } catch (Exception e) {
-            int i = 0;
+        String hangmanWord = gameService.getHangmanWord(gameQuestionInfo.getQuestion().getQuestionString());
+        createHangmanWord(hangmanWord, gameQuestionInfo.getAnswerIds(), new HashSet<String>());
+        int nrOfWrongAnswersPressed = gameService.getNrOfWrongAnswersPressed(gameQuestionInfo.getAnswerIds());
+
+        if (gameService.getQuestionImage() == null) {
+            refreshHangManImg(nrOfWrongAnswersPressed);
+        } else {
+            refreshAvailableTriesTableForQuestionWithImage(nrOfWrongAnswersPressed);
         }
     }
 
@@ -96,10 +102,18 @@ public class HangmanRefreshQuestionDisplayService extends RefreshQuestionDisplay
         }
     }
 
+    private void refreshAvailableTriesTableForQuestionWithImage(int nrOfWrongLettersPressed) {
+        for (int i = nrOfWrongLettersPressed - 1; i >= 0; i--) {
+            Image image = getAbstractGameScreen().getRoot().findActor(HangmanQuestionContainerCreatorService.AVAILABLE_TRIES_IMAGE_CELL_NAME + i);
+            if (image != null) {
+                image.addAction(Actions.fadeOut(0.5f));
+            }
+        }
+    }
+
     private void refreshHangManImg(int nrOfWrongLettersPressed) {
         Res imgName = Game.getInstance().getMainDependencyManager().createResourceService().getByName("h" + nrOfWrongLettersPressed);
         Image image = GraphicUtils.getImage(imgName);
-        float hangmanImageDimen = GameDimen.side_hangman_image.getDimen() / 1;
         image.setHeight(HangmanGameScreen.getHangmanImgHeight());
         image.setWidth(HangmanGameScreen.getHangmanImgWidth());
         Table table = (Table) abstractGameScreen.getRoot().findActor(ACTOR_NAME_HANGMAN_IMAGE);
@@ -116,16 +130,16 @@ public class HangmanRefreshQuestionDisplayService extends RefreshQuestionDisplay
     }
 
     private Table getLettersTableFromStage() {
-        return abstractGameScreen.getRoot().findActor(ACTOR_NAME_HANGMAN_WORD_TABLE);
-//        Table hangmanWordTable = abstractGameScreen.getRoot().findActor(ACTOR_NAME_HANGMAN_WORD_TABLE);
-//        if (hangmanWordTable != null) {
-//        }
-//        hangmanWordTable = new Table();
-//        float yPosition = GameDimen.height_hangman_button.getDimen() * (HangmanQuestionContainerCreatorService.nrOfAnswerRows() + 1) + MainDimen.vertical_general_margin.getDimen() * 2;
-//        hangmanWordTable.setPosition(0, yPosition);
-//        ActorPositionManager.setActorCenterHorizontalOnScreen(hangmanWordTable);
-//        abstractGameScreen.addActor(hangmanWordTable);
-//        return hangmanWordTable;
+        Table hangmanWordTable = abstractGameScreen.getRoot().findActor(ACTOR_NAME_HANGMAN_WORD_TABLE);
+        if (hangmanWordTable != null) {
+            return abstractGameScreen.getRoot().findActor(ACTOR_NAME_HANGMAN_WORD_TABLE);
+        }
+        hangmanWordTable = new Table();
+        float yPosition = GameDimen.width_hangman_button.getDimen() * (HangmanQuestionContainerCreatorService.nrOfAnswerRows() + 1) + MainDimen.vertical_general_margin.getDimen() * 2;
+        hangmanWordTable.setPosition(0, yPosition);
+        ActorPositionManager.setActorCenterHorizontalOnScreen(hangmanWordTable);
+        abstractGameScreen.addActor(hangmanWordTable);
+        return hangmanWordTable;
     }
 
 }

@@ -20,7 +20,7 @@ import org.robovm.pods.google.mobileads.GADInterstitialDelegateAdapter;
 import org.robovm.pods.google.mobileads.GADRequest;
 import org.robovm.pods.google.mobileads.GADRequestError;
 
-import libgdx.implementations.hangman.HangmanGame;
+import libgdx.implementations.anatomy.AnatomyGame;
 import libgdx.utils.startgame.test.DefaultBillingService;
 import libgdx.utils.startgame.test.DefaultFacebookService;
 
@@ -29,7 +29,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
 
     private boolean adsInitialized = false;
 
-    private GameProperties gameProperties = GameProperties.hangman;
+    private GameProperties gameProperties = GameProperties.anatomy;
 
     private GADBannerView bannerAdview;
     private GADInterstitial interstitialAd;
@@ -45,7 +45,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
         config.orientationLandscape = !appInfoService.isPortraitMode();
         config.orientationPortrait = appInfoService.isPortraitMode();
         iosApplication = new IOSApplication(
-                new HangmanGame(
+                new AnatomyGame(
                         new DefaultFacebookService(),
                         new DefaultBillingService(),
                         appInfoService),

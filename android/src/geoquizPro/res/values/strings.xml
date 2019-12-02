@@ -3,7 +3,7 @@
 
     <string name="app_name">World Geography Pro</string>
     <string name="language">en</string>
-    <string name="game_id">skelgame</string>
+    <string name="game_id">quizgame</string>
 
     <string name="admob_banner_id">xxx</string>
     <string name="admob_inter_id">xxx</string>

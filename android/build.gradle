@@ -29,6 +29,12 @@ android {
         kennstdePro {
             assets.srcDirs = ['assets/tournament_resources/implementations/kennstde', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        anatomy {
+            assets.srcDirs = ['assets/tournament_resources/implementations/anatomy', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        anatomyPro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/anatomy', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -112,6 +118,22 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/kennstdepro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        anatomy {
+            applicationIdSuffix ".anatomy"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/anatomy_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        anatomyPro {
+            applicationIdSuffix ".anatomypro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/anatomypro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }

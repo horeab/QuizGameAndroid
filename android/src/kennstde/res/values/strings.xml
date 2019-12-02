@@ -5,10 +5,10 @@
     <string name="language">en</string>
     <string name="game_id">kennstde</string>
 
-    <string name="admob_banner_id">xxx</string>
-    <string name="admob_inter_id">xxx</string>
-    <string name="admob_video_id">xxx</string>
-    <string name="admob_app_id">xxx</string>
+    <string name="admob_banner_id">ca-app-pub-9432399956064043/7198508562</string>
+    <string name="admob_inter_id">ca-app-pub-9432399956064043/4245042163</string>
+    <string name="admob_video_id">ca-app-pub-9432399956064043/2931960499</string>
+    <string name="admob_app_id">ca-app-pub-9432399956064043~1229718784</string>
 
     <bool name="google_facebook_login_enabled">false</bool>
     <bool name="isPro">false</bool>

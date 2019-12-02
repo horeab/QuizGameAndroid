@@ -107,10 +107,13 @@ public class QuestionFinishedOperationsService {
             @Override
             public void executeOperations() {
                 Actor actor = gameScreen.getRoot().findActor(HeaderCreator.HEADER_TABLE_NAME);
-                actor.addAction(Actions.fadeOut(0.5f));
+                if (actor != null) {
+                    actor.addAction(Actions.fadeOut(0.5f));
+                }
                 gameScreen.executeLevelFinished();
             }
         });
+        gameScreen.animateGameFinished();
         gameScreen.addAction(Actions.sequence(Actions.delay(1f), ra));
     }
 }
