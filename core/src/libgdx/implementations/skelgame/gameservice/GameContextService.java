@@ -13,6 +13,7 @@ public class GameContextService {
         return createGameContext(AMOUNT_AVAILABLE_HINTS, questionConfig);
     }
 
+
     public GameContext createGameContext(int availableHints, QuestionConfig questionConfig) {
         Question[] randomQuestions = new RandomQuestionCreatorService().createRandomQuestions(questionConfig);
         GameUser gameUser = createGameUser(randomQuestions);

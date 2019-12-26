@@ -21,6 +21,8 @@ import org.robovm.pods.google.mobileads.GADRequest;
 import org.robovm.pods.google.mobileads.GADRequestError;
 
 import libgdx.implementations.anatomy.AnatomyGame;
+import libgdx.implementations.geoquiz.QuizGame;
+import libgdx.implementations.paintings.PaintingsGame;
 import libgdx.utils.startgame.test.DefaultBillingService;
 import libgdx.utils.startgame.test.DefaultFacebookService;
 
@@ -29,7 +31,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
 
     private boolean adsInitialized = false;
 
-    private GameProperties gameProperties = GameProperties.anatomy;
+    private GameProperties gameProperties = GameProperties.paintings;
 
     private GADBannerView bannerAdview;
     private GADInterstitial interstitialAd;
@@ -45,7 +47,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
         config.orientationLandscape = !appInfoService.isPortraitMode();
         config.orientationPortrait = appInfoService.isPortraitMode();
         iosApplication = new IOSApplication(
-                new AnatomyGame(
+                new PaintingsGame(
                         new DefaultFacebookService(),
                         new DefaultBillingService(),
                         appInfoService),

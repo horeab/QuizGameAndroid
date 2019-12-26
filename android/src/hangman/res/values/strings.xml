@@ -5,10 +5,10 @@
     <string name="language">en</string>
     <string name="game_id">hangman</string>
 
-    <string name="admob_banner_id">ca-app-pub-9432399956064043/9813301292</string>
-    <string name="admob_inter_id">ca-app-pub-9432399956064043/2722592418</string>
-    <string name="admob_video_id">ca-app-pub-9432399956064043/7783347401</string>
-    <string name="admob_app_id">ca-app-pub-9432399956064043~8343758219</string>
+    <string name="admob_banner_id">ca-app-pub-9894292627655692/6250597247</string>
+    <string name="admob_inter_id">ca-app-pub-9894292627655692/4699548712</string>
+    <string name="admob_video_id">ca-app-pub-9894292627655692/5236898473</string>
+    <string name="admob_app_id">ca-app-pub-9894292627655692~6012630385</string>
 
     <bool name="google_facebook_login_enabled">false</bool>
     <bool name="isPro">false</bool>

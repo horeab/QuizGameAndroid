@@ -11,12 +11,12 @@ public enum GameProperties {
             GameIdEnum.quizgame,
             NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
             NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
-            "ca-app-pub-9432399956064043~7758141729",
-            "ca-app-pub-9432399956064043/8792840034",
-            "ca-app-pub-9432399956064043/9120637934",
-            "ca-app-pub-9432399956064043/7479758360",
-            "1480827008",
-            "1480827008"),
+            "ca-app-pub-9894292627655692~3492378443",
+            "ca-app-pub-9894292627655692/1794447109",
+            "ca-app-pub-9894292627655692/9535058525",
+            "ca-app-pub-9894292627655692/8168283767",
+            "1480826003",
+            "1480826003"),
     hangman(
             GameIdEnum.hangman,
             NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
@@ -48,7 +48,17 @@ public enum GameProperties {
             "ca-app-pub-9432399956064043/1892733617",
             "ca-app-pub-9432399956064043/9870817051",
             "1486431352",
-            "1486431352"),;
+            "1486431352"),
+    paintings(
+            GameIdEnum.paintings,
+            NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
+            NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
+            "ca-app-pub-9432399956064043~9668937812",
+            "ca-app-pub-9432399956064043/6934963264",
+            "ca-app-pub-9432399956064043/7042774478",
+            "ca-app-pub-9432399956064043/2876777681",
+            "1491886284",
+            "1491886284"),;
 
     private GameIdEnum gameIdEnum;
     private String language;
