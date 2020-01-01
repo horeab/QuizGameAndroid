@@ -35,20 +35,20 @@ public class CampaignService {
         return campaignStoreService.getAllCampaignLevels();
     }
 
-    public int getTotalWonStars(List<CampaignStoreLevel> list) {
-        int total = 0;
+    public long getTotalWonScore(List<CampaignStoreLevel> list) {
+        long total = 0;
         for (CampaignStoreLevel level : list) {
-            total = total + level.getStarsWon();
+            total = total + level.getScore();
         }
         return total;
     }
 
-    public void levelFinished(int starsWon, CampaignLevel level) {
+    public void levelFinished(long scoreWon, CampaignLevel level) {
         Integer storeCrossWordLevel = getCrosswordLevel(level);
         campaignStoreService.updateLevel(level);
         campaignStoreService.updateStatus(level, CampaignLevelStatusEnum.FINISHED);
-        if (storeCrossWordLevel == -1 || starsWon > campaignStoreService.getStarsWon(level)) {
-            campaignStoreService.updateStarsWon(level, starsWon);
+        if (storeCrossWordLevel == -1 || scoreWon > campaignStoreService.getScoreWon(level)) {
+            campaignStoreService.updateScoreWon(level, scoreWon);
         }
         List<Integer> finishedLevels = new ArrayList<>();
         for (CampaignStoreLevel storeLevel : getFinishedCampaignLevels()) {

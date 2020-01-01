@@ -53,7 +53,7 @@ public class CampaignLevelButtonBuilder extends ButtonBuilder {
     }
 
     private Table createStarsBar() {
-        Table table = new StarsBarCreator(level.getStarsWon()).createHorizontalStarsBar(MainDimen.vertical_general_margin.getDimen() * 3f);
+        Table table = new StarsBarCreator(level.getScore()).createHorizontalStarsBar(MainDimen.vertical_general_margin.getDimen() * 3f);
         table.setBackground(GraphicUtils.getNinePatch(Resource.stars_table_background));
         return table;
     }

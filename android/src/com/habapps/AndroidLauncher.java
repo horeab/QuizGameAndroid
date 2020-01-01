@@ -22,6 +22,7 @@ import com.habapps.service.SkelGameAppInfoServiceImpl;
 import libgdx.game.Game;
 import libgdx.implementations.geoquiz.QuizGame;
 import libgdx.implementations.hangman.HangmanGame;
+import libgdx.implementations.judetelerom.JudeteleRomGame;
 import libgdx.implementations.paintings.PaintingsGame;
 import libgdx.utils.startgame.test.DefaultBillingService;
 import libgdx.utils.startgame.test.DefaultFacebookService;
@@ -78,10 +79,20 @@ public class AndroidLauncher extends AndroidApplication {
 
     private View createGameView() {
         return initializeForView(
-                new PaintingsGame(
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                new JudeteleRomGame(
                         new DefaultFacebookService(),
                         new DefaultBillingService(),
                         appInfoService),
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
+                //////////////////////////
                 new AndroidApplicationConfiguration());
     }
 

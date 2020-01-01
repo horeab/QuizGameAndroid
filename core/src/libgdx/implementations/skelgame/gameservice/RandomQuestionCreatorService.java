@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import libgdx.campaign.QuestionCategory;
 import libgdx.campaign.QuestionConfig;
 import libgdx.campaign.RandomCategoryAndDifficulty;
 import libgdx.implementations.skelgame.question.Question;

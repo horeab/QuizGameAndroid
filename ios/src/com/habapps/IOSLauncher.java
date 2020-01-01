@@ -20,9 +20,7 @@ import org.robovm.pods.google.mobileads.GADInterstitialDelegateAdapter;
 import org.robovm.pods.google.mobileads.GADRequest;
 import org.robovm.pods.google.mobileads.GADRequestError;
 
-import libgdx.implementations.anatomy.AnatomyGame;
-import libgdx.implementations.geoquiz.QuizGame;
-import libgdx.implementations.paintings.PaintingsGame;
+import libgdx.implementations.judetelerom.JudeteleRomGame;
 import libgdx.utils.startgame.test.DefaultBillingService;
 import libgdx.utils.startgame.test.DefaultFacebookService;
 
@@ -31,7 +29,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
 
     private boolean adsInitialized = false;
 
-    private GameProperties gameProperties = GameProperties.paintings;
+    private GameProperties gameProperties = GameProperties.judetelerom;
 
     private GADBannerView bannerAdview;
     private GADInterstitial interstitialAd;
@@ -47,10 +45,20 @@ public class IOSLauncher extends IOSApplication.Delegate {
         config.orientationLandscape = !appInfoService.isPortraitMode();
         config.orientationPortrait = appInfoService.isPortraitMode();
         iosApplication = new IOSApplication(
-                new PaintingsGame(
+                ////////////////////
+                ////////////////////
+                ////////////////////
+                ////////////////////
+                ////////////////////
+                new JudeteleRomGame(
                         new DefaultFacebookService(),
                         new DefaultBillingService(),
                         appInfoService),
+                ////////////////////
+                ////////////////////
+                ////////////////////
+                ////////////////////
+                ////////////////////
 
                 config);
         return iosApplication;

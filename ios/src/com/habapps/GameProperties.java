@@ -58,7 +58,17 @@ public enum GameProperties {
             "ca-app-pub-9432399956064043/7042774478",
             "ca-app-pub-9432399956064043/2876777681",
             "1491886284",
-            "1491886284"),;
+            "1491886284"),
+    judetelerom(
+            GameIdEnum.judetelerom,
+            NSBundle.getMainBundle().getLocalizedString("language","ro","InfoPlist"),
+            NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","ro","InfoPlist"),
+            "ca-app-pub-9432399956064043~9668937812",
+            "ca-app-pub-9432399956064043/7175394584",
+            "ca-app-pub-9432399956064043/5862312918",
+            "ca-app-pub-9432399956064043/7269450277",
+            "1492916130",
+            "1492916130"),;
 
     private GameIdEnum gameIdEnum;
     private String language;

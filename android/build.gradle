@@ -41,6 +41,9 @@ android {
         paintingsPro {
             assets.srcDirs = ['assets/tournament_resources/implementations/paintings', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        judete {
+            assets.srcDirs = ['assets/tournament_resources/implementations/judetelerom', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -156,6 +159,14 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/paintingspro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        judete {
+            applicationIdSuffix ".judete"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/judete_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }

@@ -23,7 +23,7 @@ import libgdx.utils.Utils;
 
 public class PaintingGameScreen extends GameScreen<PaintingsScreenManager> {
 
-    public static int TOTAL_QUESTIONS = 5;
+    public static int TOTAL_QUESTIONS = 2;
     private CampaignLevel campaignLevel;
     private Table allTable;
     private MyButton hoverBackButton;
@@ -47,7 +47,6 @@ public class PaintingGameScreen extends GameScreen<PaintingsScreenManager> {
         allTable = new Table();
         QuestionContainerCreatorService questionContainerCreatorService = new PaintingsQuizQuestionContainerCreatorService(gameContext, this);
         Table questionTable = questionContainerCreatorService.createQuestionTable();
-        questionTable.toBack();
         Table answersTable = questionContainerCreatorService.createAnswerOptionsTable();
         questionTable.setHeight(ScreenDimensionsManager.getScreenHeightValue(45));
         answersTable.setHeight(ScreenDimensionsManager.getScreenHeightValue(50));

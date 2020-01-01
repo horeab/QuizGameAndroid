@@ -8,9 +8,9 @@ import libgdx.resources.dimen.MainDimen;
 
 public class StarsBarCreator {
 
-    private int wonStars;
+    private long wonStars;
 
-    public StarsBarCreator(int wonStars) {
+    public StarsBarCreator(long wonStars) {
         this.wonStars = wonStars;
     }
 

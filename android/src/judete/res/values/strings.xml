@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Judetele Romaniei</string>
+    <string name="language">ro</string>
+    <string name="game_id">judetelerom</string>
+
+    <string name="admob_banner_id">ca-app-pub-9432399956064043/1661900371</string>
+    <string name="admob_inter_id">ca-app-pub-9432399956064043/7941681340</string>
+    <string name="admob_video_id">ca-app-pub-9432399956064043/9348818706</string>
+    <string name="admob_app_id">ca-app-pub-9432399956064043~9230712289</string>
+
+    <bool name="google_facebook_login_enabled">false</bool>
+    <bool name="isPro">false</bool>
+</resources>
