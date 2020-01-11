@@ -219,11 +219,6 @@ public class Utils {
     private static AppInfoService cloneAppInfoService(final AppInfoService currentAppInfoService, final String newLang) {
         return new AppInfoService() {
             @Override
-            public void removeAds() {
-
-            }
-
-            @Override
             public String getAppName() {
                 return currentAppInfoService.getAppName();
             }
@@ -231,6 +226,11 @@ public class Utils {
             @Override
             public String getProVersionStoreAppId() {
                 return currentAppInfoService.getProVersionStoreAppId();
+            }
+
+            @Override
+            public void removeAds() {
+                currentAppInfoService.removeAds();
             }
 
             @Override

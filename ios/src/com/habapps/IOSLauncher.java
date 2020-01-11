@@ -102,8 +102,9 @@ public class IOSLauncher extends IOSApplication.Delegate {
         pool.close();
     }
 
-    public void removeAds(){
-        bannerAdview.removeFromSuperview();
+    public void removeAds() {
+        bannerAdview.setFrame(new CGRect(0, 0, 0, 0));
+        bannerAdview.setDelegate(null);
     }
 
     private void initializeAds(IOSApplication iosApplication) {

@@ -40,7 +40,8 @@ public class InAppPurchaseManager {
     }
 
     public void displayInAppPurchasesPopup() {
-        String localName = skuInfo == null || skuInfo.equals(Information.UNAVAILABLE) ? MainGameLabel.l_not_available.getText() : "skuInfo.getLocalName()";
+        initButtons();
+        String localName = skuInfo == null || skuInfo.equals(Information.UNAVAILABLE) ? MainGameLabel.l_not_available.getText() : MainGameLabel.l_extracontent.getText();
         inAppPurchasesPopup = new InAppPurchasesPopup(Game.getInstance().getAbstractScreen(), localName, buyButton, restoreButton);
         inAppPurchasesPopup.addToPopupManager();
     }
@@ -73,6 +74,8 @@ public class InAppPurchaseManager {
         buyButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                buyButton.setDisabled(true);
+                restoreButton.setDisabled(true);
                 buyItem();
             }
         });
@@ -98,6 +101,7 @@ public class InAppPurchaseManager {
     }
 
     private void buyItem() {
+//        Game.getInstance().getAppInfoService().removeAds();
         Game.getInstance().purchaseManager.purchase(EXTRA_CONTENT_PRODUCT_ID);
     }
 
@@ -107,6 +111,7 @@ public class InAppPurchaseManager {
         hideInAppPurchasesPopup(Utils.createRunnableAction(new Runnable() {
             @Override
             public void run() {
+                Game.getInstance().getAppInfoService().removeAds();
                 MyNotificationPopupConfigBuilder myNotificationPopupConfigBuilder = new MyNotificationPopupConfigBuilder()
                         .setText(MainGameLabel.l_purchased.getText())
                         .setTransferBetweenScreens(true);
@@ -135,6 +140,7 @@ public class InAppPurchaseManager {
             Gdx.app.postRunnable(new Runnable() {
                 @Override
                 public void run() {
+                    initButtons();
                     showErrorOnMainThread(e.getMessage());
                 }
             });
@@ -178,6 +184,8 @@ public class InAppPurchaseManager {
 
         @Override
         public void handlePurchaseError(Throwable e) {
+            buyButton.setDisabled(false);
+            restoreButton.setDisabled(false);
             showErrorOnMainThread("Error:" + e.getMessage());
         }
 
