@@ -15,6 +15,11 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
     }
 
     @Override
+    public void removeAds() {
+
+    }
+
+    @Override
     public String getGameIdPrefix() {
         return activity.getResources().getString(R.string.game_id);
     }

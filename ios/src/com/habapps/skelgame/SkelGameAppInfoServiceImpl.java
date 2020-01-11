@@ -4,6 +4,7 @@ package com.habapps.skelgame;
 import com.habapps.IOSLauncher;
 
 import libgdx.game.external.AppInfoService;
+import libgdx.utils.Utils;
 
 public class SkelGameAppInfoServiceImpl implements AppInfoService {
 
@@ -17,6 +18,10 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
         return true;
     }
 
+    @Override
+    public void removeAds() {
+        iosLauncher.removeAds();
+    }
 
     @Override
     public String getProVersionStoreAppId() {
@@ -85,7 +90,7 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
 
     @Override
     public float gameScreenTopMargin() {
-        if (isScreenShotMode() || isProVersion()) {
+        if (isScreenShotMode() || Utils.isValidExtraContent()) {
             return 0;
         }
         return iosLauncher.getSafeAreaInsets() + iosLauncher.getBannerAdHeight();

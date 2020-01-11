@@ -21,7 +21,7 @@
       <skipPngCrush>true</skipPngCrush>
     </resource>
     <resource>
-      <directory>../android/assets/tournament_resources/implementations/judetelerom</directory>
+      <directory>../android/assets/tournament_resources/implementations/quizgame</directory>
       <includes>
         <include>**</include>
       </includes>

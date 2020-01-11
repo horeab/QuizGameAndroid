@@ -2,6 +2,7 @@ package com.habapps;
 
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
+import com.badlogic.gdx.pay.ios.apple.PurchaseManageriOSApple;
 import com.habapps.skelgame.SkelGameAppInfoServiceImpl;
 
 import org.robovm.apple.coregraphics.CGRect;
@@ -20,16 +21,18 @@ import org.robovm.pods.google.mobileads.GADInterstitialDelegateAdapter;
 import org.robovm.pods.google.mobileads.GADRequest;
 import org.robovm.pods.google.mobileads.GADRequestError;
 
-import libgdx.implementations.judetelerom.JudeteleRomGame;
-import libgdx.utils.startgame.test.DefaultBillingService;
-import libgdx.utils.startgame.test.DefaultFacebookService;
+import libgdx.implementations.geoquiz.QuizGame;
+import libgdx.utils.Utils;
+
+;
 
 public class IOSLauncher extends IOSApplication.Delegate {
 
 
     private boolean adsInitialized = false;
 
-    private GameProperties gameProperties = GameProperties.judetelerom;
+    private GameProperties gameProperties = GameProperties.geoquiz;
+    private QuizGame game;
 
     private GADBannerView bannerAdview;
     private GADInterstitial interstitialAd;
@@ -44,16 +47,18 @@ public class IOSLauncher extends IOSApplication.Delegate {
         appInfoService = new SkelGameAppInfoServiceImpl(this);
         config.orientationLandscape = !appInfoService.isPortraitMode();
         config.orientationPortrait = appInfoService.isPortraitMode();
+
+        game = new QuizGame(
+                appInfoService);
+        game.purchaseManager = new PurchaseManageriOSApple();
+
         iosApplication = new IOSApplication(
                 ////////////////////
                 ////////////////////
                 ////////////////////
                 ////////////////////
                 ////////////////////
-                new JudeteleRomGame(
-                        new DefaultFacebookService(),
-                        new DefaultBillingService(),
-                        appInfoService),
+                game,
                 ////////////////////
                 ////////////////////
                 ////////////////////
@@ -85,7 +90,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
     public boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions) {
         boolean finishLaunching = super.didFinishLaunching(application, launchOptions);
 
-        if (!appInfoService.isScreenShotMode() && !appInfoService.isProVersion()) {
+        if (!appInfoService.isScreenShotMode() && !Utils.isValidExtraContent()) {
             initializeAds(iosApplication);
         }
         return finishLaunching;
@@ -95,6 +100,10 @@ public class IOSLauncher extends IOSApplication.Delegate {
         NSAutoreleasePool pool = new NSAutoreleasePool();
         UIApplication.main(argv, null, IOSLauncher.class);
         pool.close();
+    }
+
+    public void removeAds(){
+        bannerAdview.removeFromSuperview();
     }
 
     private void initializeAds(IOSApplication iosApplication) {
@@ -150,7 +159,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
     }
 
     public void showPopupAd(Runnable afterClose) {
-        if (!appInfoService.isScreenShotMode() && !appInfoService.isProVersion()) {
+        if (!appInfoService.isScreenShotMode() && !Utils.isValidExtraContent()) {
             if (interstitialAd.isReady()) {
                 interstitialAd.present(UIApplication.getSharedApplication().getKeyWindow().getRootViewController());
             } else {

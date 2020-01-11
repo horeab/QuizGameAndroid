@@ -24,8 +24,6 @@ import libgdx.implementations.geoquiz.QuizGame;
 import libgdx.implementations.hangman.HangmanGame;
 import libgdx.implementations.judetelerom.JudeteleRomGame;
 import libgdx.implementations.paintings.PaintingsGame;
-import libgdx.utils.startgame.test.DefaultBillingService;
-import libgdx.utils.startgame.test.DefaultFacebookService;
 
 public class AndroidLauncher extends AndroidApplication {
 
@@ -85,8 +83,6 @@ public class AndroidLauncher extends AndroidApplication {
                 //////////////////////////
                 //////////////////////////
                 new JudeteleRomGame(
-                        new DefaultFacebookService(),
-                        new DefaultBillingService(),
                         appInfoService),
                 //////////////////////////
                 //////////////////////////
