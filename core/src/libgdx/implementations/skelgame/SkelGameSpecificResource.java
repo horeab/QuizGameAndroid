@@ -1,6 +1,6 @@
 package libgdx.implementations.skelgame;
 
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.I18NBundle;
 
 import libgdx.game.Game;
@@ -11,6 +11,7 @@ public enum SkelGameSpecificResource implements SpecificResource {
     // @formatter:off
 
     specific_labels("labels/labels", I18NBundle.class),
+    press_finger("images/press_finger.png", Texture.class),
 
     ;
     // @formatter:on

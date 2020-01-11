@@ -3,15 +3,11 @@ package libgdx.startgame;
 import libgdx.constants.GameIdEnum;
 import libgdx.implementations.skelgame.SkelGame;
 import libgdx.utils.startgame.test.DefaultAppInfoService;
-import libgdx.utils.startgame.test.DefaultBillingService;
-import libgdx.utils.startgame.test.DefaultFacebookService;
 
 public class StartGame {
 
     public static void main(String[] args) {
         SkelGame game = new SkelGame(
-                new DefaultFacebookService(),
-                new DefaultBillingService(),
                 new DefaultAppInfoService() {
                     @Override
                     public String getGameIdPrefix() {

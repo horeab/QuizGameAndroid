@@ -18,6 +18,8 @@ public interface AppInfoService {
 
     void showRewardedVideoAd();
 
+    void removeAds();
+
     String getMainResourcesFolder();
 
     String getResourcesFolder();

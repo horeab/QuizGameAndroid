@@ -21,11 +21,20 @@ public enum MainGameLabel implements GameLabel {
     l_score,
     l_score_record,
     l_new_game,
+    l_highscore,
+    l_play,
 
     guest,
 
     privacy_policy,
-    facebook_share_btn;
+    facebook_share_btn,
+
+    l_not_available,
+    l_buy,
+    l_restore_purchase,
+    l_nothing_to_restore,
+    l_purchased,
+    ;
 
     @Override
     public String getText(Object... params) {

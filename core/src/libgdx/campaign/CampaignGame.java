@@ -2,13 +2,11 @@ package libgdx.campaign;
 
 
 import libgdx.dbapi.UniqueDbOperationContainer;
-import libgdx.game.*;
+import libgdx.game.Game;
+import libgdx.game.GameId;
+import libgdx.game.MainDependencyManager;
 import libgdx.game.external.AppInfoService;
-import libgdx.game.external.BillingService;
-import libgdx.game.external.FacebookService;
 import libgdx.game.external.LoginService;
-import libgdx.implementations.skelgame.SkelGameDependencyManager;
-import libgdx.implementations.skelgame.SkelGameMainDependencyManager;
 import libgdx.login.GuestUserLoginService;
 import libgdx.screen.AbstractScreen;
 import libgdx.screen.AbstractScreenManager;
@@ -21,11 +19,9 @@ public abstract class CampaignGame<
         TScreenManager extends AbstractScreenManager,
         TGameId extends Enum & GameId> extends Game<TAppInfoService, TMainDependencyManager, TSubGameDependencyManager, TScreen, TScreenManager, TGameId> {
 
-    public CampaignGame(FacebookService facebookService,
-                        BillingService billingService,
-                        TAppInfoService appInfoService,
+    public CampaignGame(TAppInfoService appInfoService,
                         TMainDependencyManager mainDependencyManager) {
-        super(facebookService, billingService, appInfoService, mainDependencyManager);
+        super(appInfoService, mainDependencyManager);
     }
 
     @Override

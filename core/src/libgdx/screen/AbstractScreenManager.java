@@ -8,8 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 
 import libgdx.controls.label.MyWrappedLabel;
 import libgdx.game.Game;
+import libgdx.resources.FontManager;
 import libgdx.resources.gamelabel.MainGameLabel;
 import libgdx.utils.ActorPositionManager;
+import libgdx.utils.model.FontConfig;
 
 public abstract class AbstractScreenManager {
 
@@ -87,7 +89,9 @@ public abstract class AbstractScreenManager {
     public static MyWrappedLabel addLoadingLabel(AbstractScreen newScreen) {
         MyWrappedLabel loadingLabel = new MyWrappedLabel(MainGameLabel.loading.getText());
         loadingLabel.setStyleDependingOnContrast();
+        loadingLabel.setFontConfig(new FontConfig(FontConfig.FONT_SIZE));
         loadingLabel.setName(LOADING_LABEL_NAME);
+        loadingLabel.setFontScale(Game.getInstance().getAppInfoService().isPortraitMode() ? FontManager.getNormalBigFontDim() : FontManager.getBigFontDim());
         ActorPositionManager.setActorCenterScreen(loadingLabel);
         newScreen.addActor(loadingLabel);
         return loadingLabel;

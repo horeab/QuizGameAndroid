@@ -17,6 +17,7 @@ import libgdx.controls.TextTable;
 import libgdx.game.Game;
 import libgdx.resources.FontManager;
 import libgdx.utils.model.FontColor;
+import libgdx.utils.model.FontConfig;
 
 public class MyWrappedLabel extends TextTable {
 
@@ -29,6 +30,14 @@ public class MyWrappedLabel extends TextTable {
 
     public MyWrappedLabel(String text) {
         this(new MyWrappedLabelConfigBuilder().setSingleLineLabel().setText(text).build());
+    }
+
+    public MyWrappedLabel(String text, float fontScale) {
+        this(text, new FontConfig(Math.round(fontScale)));
+    }
+
+    public MyWrappedLabel(String text, FontConfig fontConfig) {
+        this(new MyWrappedLabelConfigBuilder().setSingleLineLabel().setFontConfig(fontConfig).setText(text).build());
     }
 
     public MyWrappedLabel(MyWrappedLabelConfig myWrappedLabelConfig) {
@@ -58,6 +67,14 @@ public class MyWrappedLabel extends TextTable {
     public void setFontScale(float fontScale) {
         for (MyLabel myLabel : getLabels()) {
             myLabel.setFontScale(fontScale);
+        }
+    }
+
+    public void setFontConfig(FontConfig fontConfig) {
+        for (MyLabel myLabel : getLabels()) {
+            Label.LabelStyle style = new Label.LabelStyle();
+            style.font = Game.getInstance().getFontManager().getFont(fontConfig);
+            myLabel.setStyle(style);
         }
     }
 

@@ -5,15 +5,11 @@ import libgdx.game.Game;
 import libgdx.implementations.skelgame.GameIdEnum;
 import libgdx.implementations.geoquiz.QuizGame;
 import libgdx.utils.startgame.test.DefaultAppInfoService;
-import libgdx.utils.startgame.test.DefaultBillingService;
-import libgdx.utils.startgame.test.DefaultFacebookService;
 
 public class StartGameQuiz {
 
     public static void main(String[] args) {
         QuizGame game = new QuizGame(
-                new DefaultFacebookService(),
-                new DefaultBillingService(),
                 new DefaultAppInfoService() {
                     @Override
                     public String getGameIdPrefix() {
@@ -32,7 +28,7 @@ public class StartGameQuiz {
 
                     @Override
                     public String getLanguage() {
-                        return "ro";
+                        return "en";
                     }
                 });
         libgdx.utils.startgame.StartGame.main(game, args);

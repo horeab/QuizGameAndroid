@@ -6,8 +6,6 @@ import libgdx.constants.GameIdEnum;
 import libgdx.game.Game;
 import libgdx.game.ScreenManager;
 import libgdx.game.external.AppInfoService;
-import libgdx.game.external.BillingService;
-import libgdx.game.external.FacebookService;
 import libgdx.screen.AbstractScreen;
 
 public class SkelGame extends CampaignGame<AppInfoService,
@@ -18,10 +16,8 @@ public class SkelGame extends CampaignGame<AppInfoService,
         GameIdEnum
         > {
 
-    public SkelGame(FacebookService facebookService,
-                  BillingService billingService,
-                  AppInfoService appInfoService) {
-        super(facebookService, billingService, appInfoService, new SkelGameMainDependencyManager());
+    public SkelGame(AppInfoService appInfoService) {
+        super(appInfoService, new SkelGameMainDependencyManager());
     }
 
     public SkelGameDependencyManager getDependencyManager() {
