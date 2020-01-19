@@ -69,11 +69,6 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
     }
 
     @Override
-    public boolean googleFacebookLoginEnabled() {
-        return false;
-    }
-
-    @Override
     public String getImplementationGameResourcesFolder() {
         return "";
     }

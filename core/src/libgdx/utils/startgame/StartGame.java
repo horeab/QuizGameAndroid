@@ -18,10 +18,5 @@ public class StartGame {
     private static final Pair<Integer, Integer> x = new ImmutablePair<>(700, 300);
 
     public static void main(Game game, String[] args) {
-//        LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-//        Pair<Integer, Integer> V = t;
-//        cfg.height = V.getLeft();
-//        cfg.width = V.getRight();
-//        new LwjglApplication(game, cfg);
     }
 }
