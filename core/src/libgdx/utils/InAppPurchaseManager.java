@@ -17,6 +17,7 @@ import libgdx.controls.button.MyButton;
 import libgdx.controls.popup.InAppPurchasesPopup;
 import libgdx.controls.popup.notificationpopup.MyNotificationPopupConfigBuilder;
 import libgdx.controls.popup.notificationpopup.MyNotificationPopupCreator;
+import libgdx.dbapi.GameStatsDbApiService;
 import libgdx.game.Game;
 import libgdx.preferences.InAppPurchasesPreferencesService;
 import libgdx.resources.gamelabel.MainGameLabel;
@@ -32,6 +33,7 @@ public class InAppPurchaseManager {
     private Information skuInfo;
     private InAppPurchasesPopup inAppPurchasesPopup;
     private String productId;
+    private Runnable executeAfterBought;
 
     public InAppPurchaseManager(String productId) {
         this.productId = productId;
@@ -40,8 +42,30 @@ public class InAppPurchaseManager {
     }
 
     public void displayInAppPurchasesPopup() {
+        displayInAppPurchasesPopup(MainGameLabel.l_extracontent.getText());
+    }
+
+    public void displayInAppPurchasesPopup(Runnable executeAfterBought) {
+        displayInAppPurchasesPopup(MainGameLabel.l_extracontent.getText(), executeAfterBought);
+    }
+
+    public void displayInAppPurchasesPopup(String text) {
+        displayInAppPurchasesPopup(text, defaultRedirectScreenRunnable());
+    }
+
+    public static Runnable defaultRedirectScreenRunnable() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                Game.getInstance().getScreenManager().showMainScreen();
+            }
+        };
+    }
+
+    public void displayInAppPurchasesPopup(String text, Runnable executeAfterBought) {
+        this.executeAfterBought = executeAfterBought;
         initButtons();
-        String localName = skuInfo == null || skuInfo.equals(Information.UNAVAILABLE) ? MainGameLabel.l_not_available.getText() : MainGameLabel.l_extracontent.getText();
+        String localName = skuInfo == null || skuInfo.equals(Information.UNAVAILABLE) ? MainGameLabel.l_not_available.getText() : text;
         inAppPurchasesPopup = new InAppPurchasesPopup(Game.getInstance().getAbstractScreen(), localName, buyButton, restoreButton);
         inAppPurchasesPopup.addToPopupManager();
     }
@@ -54,11 +78,14 @@ public class InAppPurchaseManager {
 
     private void initButtons() {
         ButtonBuilder buyButtonBuilder = new ButtonBuilder()
-//                .setFixedButtonSize(MainButtonSize.TWO_ROW_BUTTON_SIZE)
                 .setDefaultButton();
-
         ButtonBuilder restoreButtonBuilder = new ButtonBuilder()
                 .setDefaultButton();
+        if (!Game.getInstance().getAppInfoService().isPortraitMode()) {
+            buyButtonBuilder.setFixedButtonSize(MainButtonSize.TWO_ROW_BUTTON_SIZE);
+            restoreButtonBuilder.setFixedButtonSize(MainButtonSize.TWO_ROW_BUTTON_SIZE);
+        }
+
 
         if (skuInfo == null || skuInfo.equals(Information.UNAVAILABLE)) {
             restoreButtonBuilder.setDisabled(true);
@@ -76,6 +103,10 @@ public class InAppPurchaseManager {
             public void changed(ChangeEvent event, Actor actor) {
                 buyButton.setDisabled(true);
                 restoreButton.setDisabled(true);
+                if (Game.getInstance().getCurrentUser() != null) {
+                    //record how many times the buy button has been pressed
+                    new GameStatsDbApiService().incrementGameStatsTournamentsWon(Game.getInstance().getCurrentUser().getId(), Long.valueOf(DateUtils.getNowMillis()).toString());
+                }
                 buyItem();
             }
         });
@@ -116,7 +147,11 @@ public class InAppPurchaseManager {
                         .setTransferBetweenScreens(true);
                 myNotificationPopupConfigBuilder.setFontConfig(new FontConfig(FontColor.BLACK.getColor(), FontConfig.FONT_SIZE));
                 new MyNotificationPopupCreator(myNotificationPopupConfigBuilder.build()).shortNotificationPopup().addToPopupManager();
-                Game.getInstance().getScreenManager().showMainScreen();
+                if (executeAfterBought != null) {
+                    executeAfterBought.run();
+                } else {
+                    defaultRedirectScreenRunnable().run();
+                }
             }
         }));
     }

@@ -12,6 +12,8 @@ import libgdx.game.Game;
 import libgdx.graphics.GraphicUtils;
 import libgdx.resources.MainResource;
 import libgdx.resources.dimen.MainDimen;
+import libgdx.resources.gamelabel.MainGameLabel;
+import libgdx.utils.InAppPurchaseManager;
 import libgdx.utils.Utils;
 
 public class InAppPurchaseTable {
@@ -25,7 +27,12 @@ public class InAppPurchaseTable {
         return extraContentTable;
     }
 
+
     public Table create(Table extraContentTable) {
+        return create(extraContentTable, InAppPurchaseManager.defaultRedirectScreenRunnable());
+    }
+
+    public Table create(Table extraContentTable, final Runnable executeAfterBought) {
         Table lockBackgrTable = new Table();
         lockBackgrTable.setBackground(GraphicUtils.getNinePatch(MainResource.inappurchase_background));
         float imgDimen = MainDimen.horizontal_general_margin.getDimen() * 15;
@@ -43,7 +50,7 @@ public class InAppPurchaseTable {
         table.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Game.getInstance().getInAppPurchaseManager().displayInAppPurchasesPopup();
+                Game.getInstance().getInAppPurchaseManager().displayInAppPurchasesPopup(executeAfterBought);
             }
         });
         return table;

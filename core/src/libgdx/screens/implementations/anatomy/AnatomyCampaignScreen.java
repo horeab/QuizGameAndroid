@@ -1,43 +1,54 @@
 package libgdx.screens.implementations.anatomy;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 
-import java.util.List;
-
-import libgdx.campaign.CampaignLevel;
-import libgdx.campaign.CampaignLevelEnumService;
-import libgdx.campaign.CampaignService;
-import libgdx.campaign.CampaignStoreLevel;
-import libgdx.campaign.QuestionConfig;
+import libgdx.campaign.*;
+import libgdx.controls.animations.ActorAnimation;
 import libgdx.controls.button.ButtonBuilder;
 import libgdx.controls.button.MyButton;
+import libgdx.controls.button.builders.BackButtonBuilder;
 import libgdx.controls.label.MyWrappedLabel;
 import libgdx.controls.label.MyWrappedLabelConfigBuilder;
 import libgdx.controls.labelimage.InAppPurchaseTable;
 import libgdx.controls.labelimage.LabelImageConfigBuilder;
 import libgdx.game.Game;
 import libgdx.graphics.GraphicUtils;
-import libgdx.implementations.anatomy.AnatomyCampaignLevelEnum;
-import libgdx.implementations.anatomy.AnatomyGame;
-import libgdx.implementations.anatomy.AnatomyQuestionCategoryEnum;
-import libgdx.implementations.anatomy.AnatomySpecificResource;
+import libgdx.implementations.anatomy.*;
+import libgdx.implementations.hangman.HangmanCampaignLevelEnum;
+import libgdx.implementations.hangman.HangmanGame;
+import libgdx.implementations.hangman.HangmanQuestionCategoryEnum;
+import libgdx.implementations.hangman.HangmanSpecificResource;
 import libgdx.implementations.skelgame.GameButtonSkin;
 import libgdx.implementations.skelgame.LevelFinishedPopup;
 import libgdx.implementations.skelgame.SkelGameLabel;
 import libgdx.implementations.skelgame.SkelGameRatingService;
 import libgdx.implementations.skelgame.gameservice.GameContextService;
+import libgdx.implementations.skelgame.gameservice.QuizStarsService;
 import libgdx.resources.FontManager;
+import libgdx.resources.MainResource;
 import libgdx.resources.dimen.MainDimen;
+import libgdx.resources.gamelabel.MainGameLabel;
 import libgdx.resources.gamelabel.SpecificPropertiesUtils;
 import libgdx.screen.AbstractScreen;
+import libgdx.screens.implementations.hangman.HangmanGameScreen;
 import libgdx.screens.implementations.hangman.HangmanScreenManager;
 import libgdx.utils.ScreenDimensionsManager;
 import libgdx.utils.Utils;
+import libgdx.utils.model.FontColor;
+import libgdx.utils.model.FontConfig;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnatomyCampaignScreen extends AbstractScreen<HangmanScreenManager> {
 

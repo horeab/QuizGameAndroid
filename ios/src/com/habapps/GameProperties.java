@@ -21,12 +21,12 @@ public enum GameProperties {
             GameIdEnum.hangman,
             NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
             NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
-            "ca-app-pub-9432399956064043~7758141729",
-            "ca-app-pub-9432399956064043/8792840034",
-            "ca-app-pub-9432399956064043/9120637934",
-            "ca-app-pub-9432399956064043/7479758360",
-            "1481049289",
-            "1481049289"),
+            "ca-app-pub-9432399956064043~3884511098",
+            "ca-app-pub-9432399956064043/9051161572",
+            "ca-app-pub-9432399956064043/5111916566",
+            "ca-app-pub-9432399956064043/8945266083",
+            "1495590555",
+            "1495590555"),
 
     kennstde(
             GameIdEnum.kennstde,

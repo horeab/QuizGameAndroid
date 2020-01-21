@@ -99,8 +99,8 @@ android {
 /////////////////////////////////////////////////////////////////////////////
         hangman {
             applicationIdSuffix ".hangman"
-            versionCode 1
-            versionName "1.00"
+            versionCode 3
+            versionName "1.2"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/hangman_icon"]
         }

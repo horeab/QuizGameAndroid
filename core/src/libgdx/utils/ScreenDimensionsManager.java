@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-
 import libgdx.game.Game;
 
 
@@ -45,9 +44,9 @@ public class ScreenDimensionsManager {
             int width = getExternalDeviceWidth();
             //if FALSE, width is larger, so width must be adjusted
             if (!isGdxGraphicsRatioGreaterThanStandard()) {
-                width = isPortrait ?
-                        Math.round(getExternalDeviceHeight() / STANDARD_SCREEN_RATIO) :
-                        Math.round(getExternalDeviceHeight() * STANDARD_SCREEN_RATIO);
+//                width = isPortrait ?
+//                        Math.round(getExternalDeviceHeight() / STANDARD_SCREEN_RATIO) :
+//                        Math.round(getExternalDeviceHeight() * STANDARD_SCREEN_RATIO);
             }
             screenWidth = width;
         }
@@ -59,9 +58,9 @@ public class ScreenDimensionsManager {
             int height = getExternalDeviceHeight();
             //if TRUE, width is smaller, so height must be adjusted
             if (isGdxGraphicsRatioGreaterThanStandard()) {
-                height = isPortrait ?
-                        Math.round(getExternalDeviceWidth() * STANDARD_SCREEN_RATIO) :
-                        Math.round(getExternalDeviceWidth() / STANDARD_SCREEN_RATIO);
+//                height = isPortrait ?
+//                        Math.round(getExternalDeviceWidth() * STANDARD_SCREEN_RATIO) :
+//                        Math.round(getExternalDeviceWidth() / STANDARD_SCREEN_RATIO);
             }
             screenHeight = height;
         }
@@ -100,6 +99,10 @@ public class ScreenDimensionsManager {
     private static int getResizeMarginHeight(int height) {
         int topMarginPercent = Math.round(Game.getInstance().getAppInfoService().gameScreenTopMargin() / ScreenDimensionsManager.getScreenHeight() * 100);
         return height - Math.round(topMarginPercent / 100f * height);
+    }
+
+    public static float getScreenOrientationVal(float isPortraitValue, float isLandscapeValue) {
+        return isPortrait ? isPortraitValue : isLandscapeValue;
     }
 
 }
