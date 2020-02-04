@@ -21,7 +21,7 @@
       <skipPngCrush>true</skipPngCrush>
     </resource>
     <resource>
-      <directory>../android/assets/tournament_resources/implementations/hangman</directory>
+      <directory>../android/assets/tournament_resources/implementations/conthistory</directory>
       <includes>
         <include>**</include>
       </includes>
