@@ -24,6 +24,8 @@ public enum MainGameLabel implements GameLabel {
     l_level_record,
     l_score,
     l_score_record,
+    l_congratulations,
+    l_highscore_record,
     l_new_game,
     l_highscore,
     l_play,
@@ -50,6 +52,7 @@ public enum MainGameLabel implements GameLabel {
     l_draw,
     l_continue,
     l_multiplayer,
+    l_item_discovered,
     l_extracontent,;
 
     @Override

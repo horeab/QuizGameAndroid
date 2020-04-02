@@ -9,11 +9,12 @@ public class QuestionConfig {
     private List<String> l = new ArrayList<>();
     private List<String> c = new ArrayList<>();
     private int a;
+    private int h;
 
     public QuestionConfig(int amountOfQuestions) {
         this(new ArrayList<QuestionDifficulty>(Arrays.asList(EnumUtils.getValues(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionDifficultyTypeEnum()))),
                 new ArrayList<QuestionCategory>(Arrays.asList(EnumUtils.getValues(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionCategoryTypeEnum()))),
-                amountOfQuestions, -1);
+                amountOfQuestions);
     }
 
     public QuestionConfig(QuestionCategory questionCategory) {
@@ -29,7 +30,7 @@ public class QuestionConfig {
     }
 
     public QuestionConfig(QuestionDifficulty questionDifficulty, int amountOfQuestions) {
-        this(Collections.singletonList(questionDifficulty), new ArrayList<QuestionCategory>(Arrays.asList(EnumUtils.getValues(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionCategoryTypeEnum()))), amountOfQuestions, -1);
+        this(Collections.singletonList(questionDifficulty), new ArrayList<QuestionCategory>(Arrays.asList(EnumUtils.getValues(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionCategoryTypeEnum()))), amountOfQuestions);
     }
 
     public QuestionConfig(QuestionDifficulty QuestionDifficulty, QuestionCategory questionCategory) {
@@ -37,11 +38,7 @@ public class QuestionConfig {
     }
 
     public QuestionConfig(QuestionDifficulty QuestionDifficulty, QuestionCategory questionCategory, int amount) {
-        this(Collections.singletonList(QuestionDifficulty), Collections.singletonList(questionCategory), amount, -1);
-    }
-
-    public void setA(int a) {
-        this.a = a;
+        this(Collections.singletonList(QuestionDifficulty), Collections.singletonList(questionCategory), amount);
     }
 
     public QuestionConfig(List<QuestionCategory> questionCategory) {
@@ -49,18 +46,18 @@ public class QuestionConfig {
     }
 
     public QuestionConfig(List<QuestionCategory> questionCategory, int amountOfQuestions) {
-        this(new ArrayList<QuestionDifficulty>(Arrays.asList(EnumUtils.getValues(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionDifficultyTypeEnum()))), questionCategory, amountOfQuestions, -1);
+        this(new ArrayList<QuestionDifficulty>(Arrays.asList(EnumUtils.getValues(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionDifficultyTypeEnum()))), questionCategory, amountOfQuestions);
     }
 
     public QuestionConfig(List<QuestionDifficulty> questionDifficulty, List<QuestionCategory> questionCategory) {
-        this(questionDifficulty, questionCategory, 1, -1);
+        this(questionDifficulty, questionCategory, 1);
     }
 
     public QuestionConfig(QuestionDifficulty QuestionDifficulty, List<QuestionCategory> questionCategory, int amount) {
-        this(Collections.singletonList(QuestionDifficulty), questionCategory, amount, -1);
+        this(Collections.singletonList(QuestionDifficulty), questionCategory, amount);
     }
 
-    private QuestionConfig(List<QuestionDifficulty> questionDifficulty, List<QuestionCategory> questionCategory, int amount, int forUniqueConstructor) {
+    private QuestionConfig(List<QuestionDifficulty> questionDifficulty, List<QuestionCategory> questionCategory, int amount) {
         for (QuestionDifficulty item : questionDifficulty) {
             this.l.add(item.name());
         }
@@ -70,10 +67,19 @@ public class QuestionConfig {
         this.a = amount;
     }
 
-    public QuestionConfig(List<String> l, List<String> c, int a) {
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setH(int h) {
+        this.h = h;
+    }
+
+    public QuestionConfig(List<String> l, List<String> c, int a, int h) {
         this.l = l;
         this.c = c;
         this.a = a;
+        this.h = h;
     }
 
     public List<String> getQuestionDifficultyStringList() {
@@ -86,6 +92,10 @@ public class QuestionConfig {
 
     public int getAmount() {
         return a;
+    }
+
+    public int getAmountHints() {
+        return h;
     }
 
     public RandomCategoryAndDifficulty getRandomCategoryAndDifficulty() {

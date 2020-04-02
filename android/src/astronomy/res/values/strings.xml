@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Astronomy</string>
+    <string name="language">en</string>
+    <string name="game_id">astronomy</string>
+
+    <string name="admob_banner_id">ca-app-pub-9432399956064043/8371777750</string>
+    <string name="admob_inter_id">ca-app-pub-9432399956064043/1534427736</string>
+    <string name="admob_video_id">ca-app-pub-9432399956064043/9496678234</string>
+    <string name="admob_app_id">ca-app-pub-9432399956064043~8291407776</string>
+
+    <bool name="google_facebook_login_enabled">false</bool>
+    <bool name="isPro">false</bool>
+</resources>

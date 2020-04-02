@@ -1,7 +1,5 @@
 package libgdx.controls.label;
 
-import libgdx.constants.Contrast;
-import libgdx.game.Game;
 import libgdx.resources.FontManager;
 import libgdx.utils.ScreenDimensionsManager;
 import libgdx.utils.model.FontColor;
@@ -11,7 +9,7 @@ public class MyWrappedLabelConfigBuilder {
 
     private float width = ScreenDimensionsManager.getScreenWidthValue(80);
     private float fontScale = FontManager.getNormalFontDim();
-    private FontColor textColor = FontColor.BLACK;
+    private FontColor textColor = FontManager.getBaseColorForContrast();
     private FontConfig fontConfig;
     private String text;
     private boolean singleLineLabel = false;
@@ -30,7 +28,7 @@ public class MyWrappedLabelConfigBuilder {
         return fontScale;
     }
 
-    public MyWrappedLabelConfigBuilder setTextColor(FontColor color) {
+    public MyWrappedLabelConfigBuilder setFontColor(FontColor color) {
         this.textColor = color;
         return this;
     }
@@ -41,7 +39,7 @@ public class MyWrappedLabelConfigBuilder {
     }
 
     public MyWrappedLabelConfigBuilder setStyleDependingOnContrast() {
-        this.textColor = getScreenContrastStyle();
+        this.textColor = FontManager.getBaseColorForContrast();
         return this;
     }
 
@@ -74,13 +72,5 @@ public class MyWrappedLabelConfigBuilder {
         myWrappedLabelConfig.setFontConfig(fontConfig);
         myWrappedLabelConfig.setTextColor(textColor);
         return myWrappedLabelConfig;
-    }
-
-    public static FontColor getScreenContrastStyle() {
-        return getScreenContrastStyle(FontColor.WHITE, FontColor.BLACK);
-    }
-
-    public static FontColor getScreenContrastStyle(FontColor darkContrastStyle, FontColor lightContrastStyle) {
-        return Game.getInstance().getSubGameDependencyManager().getScreenContrast() == Contrast.LIGHT ? lightContrastStyle : darkContrastStyle;
     }
 }

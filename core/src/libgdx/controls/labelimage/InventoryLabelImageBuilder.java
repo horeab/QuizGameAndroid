@@ -1,12 +1,9 @@
 package libgdx.controls.labelimage;
 
-import com.badlogic.gdx.graphics.Color;
-
 import libgdx.controls.label.MyLabel;
 import libgdx.game.Game;
 import libgdx.resources.FontManager;
 import libgdx.resources.Res;
-import libgdx.resources.ResourcesManager;
 import libgdx.resources.dimen.MainDimen;
 import libgdx.resources.gamelabel.GameLabel;
 import libgdx.utils.model.FontColor;
@@ -18,7 +15,7 @@ public class InventoryLabelImageBuilder {
     private Res resource;
     private GameLabel frontLabel;
     private int amount;
-    private FontColor textColor = FontColor.BLACK;
+    private FontColor textColor = FontManager.getBaseColorForContrast();
 
     private String prefixStringAmount;
     private boolean positiveAmountPlusPrefix;

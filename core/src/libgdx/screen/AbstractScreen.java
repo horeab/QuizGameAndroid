@@ -132,6 +132,7 @@ public abstract class AbstractScreen<TScreenManager extends AbstractScreenManage
 
         Container<Group> backgroundContainer = createFullScreenContainer();
         setBackgroundContainer(backgroundContainer);
+        backgroundContainer.setFillParent(true);
         backgroundStage.addActor(backgroundContainer);
     }
 
@@ -140,7 +141,7 @@ public abstract class AbstractScreen<TScreenManager extends AbstractScreenManage
         if (!String.format("%.2f", backgr.getHeight() / backgr.getWidth()).equals(String.format("%.2f", ScreenDimensionsManager.STANDARD_SCREEN_RATIO))) {
             backgr = GraphicUtils.addTiledImage(MainResource.background_texture, 0, Texture.TextureWrap.Repeat, ScreenDimensionsManager.getExternalDeviceHeightValue(60));
         }
-        backgroundContainer.setBackground(backgr.getDrawable());
+        backgroundContainer.setBackground( backgr.getDrawable());
     }
 
     private Container<Group> createFullScreenContainer() {
@@ -149,6 +150,10 @@ public abstract class AbstractScreen<TScreenManager extends AbstractScreenManage
         container.setHeight(ScreenDimensionsManager.getExternalDeviceHeight());
         ActorPositionManager.setActorCenterExternalScreen(container);
         return container;
+    }
+
+    public TScreenManager getScreenManager() {
+        return screenManager;
     }
 
     @Override

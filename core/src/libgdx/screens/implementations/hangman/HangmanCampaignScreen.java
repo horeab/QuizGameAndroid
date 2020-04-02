@@ -115,7 +115,7 @@ public class HangmanCampaignScreen extends AbstractScreen<HangmanScreenManager> 
                                 questionCategoryStringList.add(categ.name());
                             }
                         }
-                        questionConfig = new QuestionConfig(questionConfig.getQuestionDifficultyStringList(), questionCategoryStringList, questionConfig.getAmount());
+                        questionConfig = new QuestionConfig(questionConfig.getQuestionDifficultyStringList(), questionCategoryStringList, questionConfig.getAmount(), questionConfig.getAmountHints());
                     }
                     HangmanGame.getInstance().getScreenManager().showCampaignGameScreen(new GameContextService().createGameContext(questionConfig), campaignLevel);
                 }
@@ -130,7 +130,7 @@ public class HangmanCampaignScreen extends AbstractScreen<HangmanScreenManager> 
                     public void run() {
                         screenManager.showCampaignScreen();
                     }
-                });
+                }, MainDimen.horizontal_general_margin.getDimen() * 15);
                 categBtn.setDisabled(true);
             }
             table.add(btnTable)

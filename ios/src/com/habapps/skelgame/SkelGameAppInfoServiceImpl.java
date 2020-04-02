@@ -35,7 +35,7 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
 
     @Override
     public boolean isProVersion() {
-        return false;
+        return true;
     }
 
     @Override

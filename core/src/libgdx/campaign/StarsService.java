@@ -2,7 +2,7 @@ package libgdx.campaign;
 
 public class StarsService {
 
-    static final int NR_OF_STARS_TO_DISPLAY = 3;
+    static final int NR_OF_STARS_TO_DISPLAY = 1;
 
     public int getStarsWon(int crosswordLevel) {
         int nrOfStars;

@@ -31,7 +31,7 @@ public abstract class CampaignGame<
         UniqueDbOperationContainer.getInstance().clear();
     }
 
-    private LoginService createLoginService() {
+    protected LoginService createLoginService() {
         return new GuestUserLoginService();
     }
 

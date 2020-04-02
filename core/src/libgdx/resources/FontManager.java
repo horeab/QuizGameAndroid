@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
+import libgdx.constants.Contrast;
 import libgdx.game.Game;
 import libgdx.resources.gamelabel.MainGameLabel;
 import libgdx.utils.ScreenDimensionsManager;
@@ -39,7 +40,7 @@ public class FontManager {
     }
 
     public static float getNormalBigFontDim() {
-        return calculateFontSize(NORMAL_BIG_FONT);
+        return ScreenDimensionsManager.getScreenOrientationVal(calculateFontSize(NORMAL_BIG_FONT), FontManager.calculateMultiplierStandardFontSize(2f));
     }
 
     public static float getBigFontDim() {
@@ -63,7 +64,11 @@ public class FontManager {
     }
 
     public BitmapFont getFont() {
-        return getFont(FontColor.BLACK);
+        return getFont(getBaseColorForContrast());
+    }
+
+    public BitmapFont getFont(Contrast contrast) {
+        return getFont(getBaseColorForContrast(contrast));
     }
 
     public BitmapFont getFont(FontColor fontColor) {
@@ -99,4 +104,15 @@ public class FontManager {
         usedFonts.put(fontConfig, font);
     }
 
+    public static FontColor getBaseColorForContrast() {
+        return getBaseColorForContrast(Game.getInstance().getSubGameDependencyManager().getScreenContrast());
+    }
+
+    public static FontColor getBaseColorForContrast(Contrast contrast) {
+        return getBaseColorForContrast(contrast, FontColor.WHITE, FontColor.BLACK);
+    }
+
+    public static FontColor getBaseColorForContrast(Contrast contrast, FontColor darkContrastStyle, FontColor lightContrastStyle) {
+        return contrast == Contrast.LIGHT ? lightContrastStyle : darkContrastStyle;
+    }
 }

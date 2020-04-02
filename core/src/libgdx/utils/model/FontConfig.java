@@ -2,6 +2,7 @@ package libgdx.utils.model;
 
 
 import com.badlogic.gdx.graphics.Color;
+import libgdx.resources.FontManager;
 
 import java.util.Objects;
 
@@ -15,6 +16,10 @@ public class FontConfig {
     private int fontSize;
     private float borderWidth;
 
+    public FontConfig(Color color, Color borderColor, float fontSize, float borderWidth) {
+        this(color, borderColor, Math.round(fontSize), borderWidth);
+    }
+
     public FontConfig(Color color, Color borderColor, int fontSize, float borderWidth) {
         this.color = color;
         this.borderColor = borderColor;
@@ -23,6 +28,10 @@ public class FontConfig {
     }
 
     public FontConfig(Color color, int fontSize) {
+        this(color, color, fontSize, STANDARD_BORDER_WIDTH);
+    }
+
+    public FontConfig(Color color, float fontSize) {
         this(color, color, fontSize, STANDARD_BORDER_WIDTH);
     }
 
@@ -39,16 +48,20 @@ public class FontConfig {
     }
 
     public FontConfig(int fontSize) {
-        this(FontColor.BLACK.getColor(), fontSize);
+        this(FontManager.getBaseColorForContrast().getColor(), fontSize);
+    }
+
+    public FontConfig(float fontSize) {
+        this(FontManager.getBaseColorForContrast().getColor(), Math.round(fontSize));
     }
 
     public FontConfig(int fontSize, float borderWidth) {
-        this(FontColor.BLACK.getColor(), FontColor.BLACK.getColor(), fontSize, borderWidth);
+        this(FontManager.getBaseColorForContrast().getColor(), FontManager.getBaseColorForContrast().getColor(), fontSize, borderWidth);
     }
 
 
     public FontConfig() {
-        this(FontColor.BLACK.getColor());
+        this(FontManager.getBaseColorForContrast().getColor());
     }
 
     public Color getColor() {

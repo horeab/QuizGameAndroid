@@ -12,6 +12,17 @@ public enum SkelGameLabel implements libgdx.resources.gamelabel.GameLabel {
     go_back,
     next_level,
     play_again,
+    l_next_day,
+    l_remaining_days,
+    l_budget,
+    l_inventory,
+    l_market,
+    l_reputation,
+    l_unlock,
+    l_travel,
+    l_empty,
+    l_reachbudget,
+    l_highscorebudget,
     ;
 
     @Override

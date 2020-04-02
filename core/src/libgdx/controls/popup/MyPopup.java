@@ -12,13 +12,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import libgdx.controls.ScreenRunnable;
+import libgdx.controls.button.MainButtonSkin;
 import libgdx.controls.button.MyButton;
 import libgdx.controls.button.builders.BackButtonBuilder;
 import libgdx.controls.label.MyWrappedLabel;
 import libgdx.controls.label.MyWrappedLabelConfigBuilder;
 import libgdx.game.Game;
 import libgdx.graphics.GraphicUtils;
-import libgdx.resources.FontManager;
 import libgdx.resources.MainResource;
 import libgdx.resources.ResourcesManager;
 import libgdx.resources.dimen.MainDimen;
@@ -26,6 +26,8 @@ import libgdx.screen.AbstractScreen;
 import libgdx.screen.AbstractScreenManager;
 import libgdx.utils.ScreenDimensionsManager;
 import libgdx.utils.Utils;
+
+import libgdx.utils.model.FontColor;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -52,7 +54,7 @@ public abstract class MyPopup<TScreen extends AbstractScreen, TScreenManager ext
     @Override
     public MyPopup addToPopupManager() {
         if (Gdx.app.getType() == Application.ApplicationType.iOS) {
-            MyButton backBtn = new BackButtonBuilder().createScreenBackButton(new ChangeListener() {
+            MyButton backBtn = new BackButtonBuilder().createScreenBackButton(MainButtonSkin.BACK_LIGHT_CONTRAST, new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     hide();
@@ -96,7 +98,7 @@ public abstract class MyPopup<TScreen extends AbstractScreen, TScreenManager ext
     }
 
     protected MyWrappedLabelConfigBuilder getInfoLabelConfigBuilder() {
-        return new MyWrappedLabelConfigBuilder().setText(getLabelText()).setWidth(getPrefWidth() - getPrefWidth() / 10);
+        return new MyWrappedLabelConfigBuilder().setText(getLabelText()).setWidth(getPrefWidth() - getPrefWidth() / 10).setFontColor(FontColor.BLACK);
     }
 
     protected static void addEmptyRowWithMargin(Table table) {

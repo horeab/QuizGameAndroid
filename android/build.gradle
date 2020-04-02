@@ -44,6 +44,12 @@ android {
         judete {
             assets.srcDirs = ['assets/tournament_resources/implementations/judetelerom', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        astronomy {
+            assets.srcDirs = ['assets/tournament_resources/implementations/astronomy', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        astronomyPro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/astronomy', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -167,6 +173,22 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/judete_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        astronomy {
+            applicationIdSuffix ".astronomy"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/astronomy_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        astronomyPro {
+            applicationIdSuffix ".astronomypro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/astronomypro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }

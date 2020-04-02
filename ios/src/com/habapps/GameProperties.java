@@ -28,6 +28,16 @@ public enum GameProperties {
             "1495590555",
             "1495590555"),
 
+    hangmanarena(GameIdEnum.hangmanarena,
+            NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
+            NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
+            "ca-app-pub-9432399956064043~8102577188",
+            "ca-app-pub-9432399956064043/9224087161",
+            "ca-app-pub-9432399956064043/2028123422",
+            "ca-app-pub-9432399956064043/5775796745",
+            "1462044086",
+            "1462044086"),
+
     kennstde(
             GameIdEnum.kennstde,
             NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
@@ -71,7 +81,7 @@ public enum GameProperties {
             "1492916130"),
 
     conthistory(
-            GameIdEnum.hangman,
+            GameIdEnum.conthistory,
             NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
             NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
             "ca-app-pub-9432399956064043~6768337490",
@@ -79,7 +89,18 @@ public enum GameProperties {
             "ca-app-pub-9432399956064043/2884647393",
             "ca-app-pub-9432399956064043/1571565723",
             "1497805644",
-            "1497805932"),;
+            "1497805932"),
+
+    astronomy(
+            GameIdEnum.astronomy,
+            NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
+            NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
+            "ca-app-pub-9432399956064043~6602393911",
+            "ca-app-pub-9432399956064043/1266306750",
+            "ca-app-pub-9432399956064043/8953225080",
+            "ca-app-pub-9432399956064043/6327061745",
+            "1501301238",
+            "1501301238"),;
 
     private GameIdEnum gameIdEnum;
     private String language;
