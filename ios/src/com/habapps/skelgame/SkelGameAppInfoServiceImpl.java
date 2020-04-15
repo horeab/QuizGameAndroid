@@ -15,7 +15,7 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
     }
     @Override
     public boolean isPortraitMode() {
-        return true;
+        return false;
     }
 
     @Override

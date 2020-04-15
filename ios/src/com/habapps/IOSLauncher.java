@@ -23,6 +23,7 @@ import org.robovm.pods.google.mobileads.GADRequestError;
 
 import libgdx.implementations.astronomy.AstronomyGame;
 import libgdx.implementations.hangmanarena.HangmanArenaGame;
+import libgdx.implementations.periodictable.PeriodicTableGame;
 import libgdx.utils.Utils;
 
 ;
@@ -32,8 +33,8 @@ public class IOSLauncher extends IOSApplication.Delegate {
 
     private boolean adsInitialized = false;
 
-    private GameProperties gameProperties = GameProperties.astronomy;
-    private AstronomyGame game;
+    private GameProperties gameProperties = GameProperties.periodictable;
+    private PeriodicTableGame game;
 
     private GADBannerView bannerAdview;
     private GADInterstitial interstitialAd;
@@ -49,7 +50,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
         config.orientationLandscape = !appInfoService.isPortraitMode();
         config.orientationPortrait = appInfoService.isPortraitMode();
 
-        game = new AstronomyGame(
+        game = new PeriodicTableGame(
                 appInfoService);
         game.purchaseManager = new PurchaseManageriOSApple();
 

@@ -58,6 +58,15 @@ public class CampaignStoreService {
         preferencesService.putString(formQuestionPlayedKey(), getAllQuestionsPlayed() + TEXT_SPLIT + questionId);
     }
 
+    public void putHintPlayedAtQuestion() {
+        preferencesService.putInteger(formHintPlayedKey(), getNrOfQuestionsPlayed());
+    }
+
+    public int getHintPlayedAtQuestion() {
+        return preferencesService.getPreferences().getInteger(formHintPlayedKey(), -1);
+    }
+
+
     public boolean isQuestionAlreadyPlayed(String questionId) {
         return getAllQuestionsPlayed().contains(TEXT_SPLIT + questionId);
     }
@@ -114,6 +123,10 @@ public class CampaignStoreService {
 
     private String formQuestionPlayedKey() {
         return "QuestionIdPlayed";
+    }
+
+    private String formHintPlayedKey() {
+        return "HintPlayed";
     }
 
     private String formNrOfQuestionsPlayedKey() {

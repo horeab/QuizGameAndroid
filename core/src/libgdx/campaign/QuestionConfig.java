@@ -100,7 +100,7 @@ public class QuestionConfig {
 
     public RandomCategoryAndDifficulty getRandomCategoryAndDifficulty() {
         QuestionDifficulty randomQuestionDifficulty = getRandomQuestionDifficulty();
-        List<QuestionCategory> categories = new QuestionConfigFileHandler().getQuestionCategoriesForDifficulty(randomQuestionDifficulty);
+        List<QuestionCategory> categories = CampaignGame.getInstance().getSubGameDependencyManager().getQuestionConfigFileHandler().getQuestionCategoriesForDifficulty(randomQuestionDifficulty);
         Collections.shuffle(categories);
         for (QuestionCategory category : new ArrayList<>(categories)) {
             if (!c.contains(category.name())) {

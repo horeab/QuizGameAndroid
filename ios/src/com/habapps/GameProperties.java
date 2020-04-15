@@ -100,7 +100,19 @@ public enum GameProperties {
             "ca-app-pub-9432399956064043/8953225080",
             "ca-app-pub-9432399956064043/6327061745",
             "1501301238",
-            "1501301238"),;
+            "1501301238"),
+
+
+    periodictable(
+            GameIdEnum.periodictable,
+            NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
+            NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
+            "ca-app-pub-9432399956064043~6064073956",
+            "ca-app-pub-9432399956064043/4228302004",
+            "ca-app-pub-9432399956064043/2915220333",
+            "ca-app-pub-9432399956064043/3227045672",
+            "1507682070",
+            "1507682070"),;
 
     private GameIdEnum gameIdEnum;
     private String language;

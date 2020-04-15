@@ -17,6 +17,10 @@ public class QuestionConfigFileHandler {
         return getInternalFile(difficultyLevelToCreate, categoryEnumToCreate).readString();
     }
 
+    public String getFileText(String path) {
+        return Gdx.files.internal(Game.getInstance().getAppInfoService().getImplementationGameResourcesFolder() + path).readString();
+    }
+
     public List<QuestionDifficulty> getQuestionDifficultiesForCategory(QuestionCategory questionCategory) {
         List<QuestionDifficulty> questionDifficulties = new ArrayList<>();
         for (QuestionDifficulty questionDifficulty : (QuestionDifficulty[]) EnumUtils.getValues(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionDifficultyTypeEnum())) {

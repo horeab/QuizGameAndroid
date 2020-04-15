@@ -50,6 +50,12 @@ android {
         astronomyPro {
             assets.srcDirs = ['assets/tournament_resources/implementations/astronomy', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        periodictable {
+            assets.srcDirs = ['assets/tournament_resources/implementations/periodictable', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        periodictablePro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/periodictable', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -189,6 +195,22 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/astronomypro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        periodictable {
+            applicationIdSuffix ".periodictable"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/periodictable_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        periodictablePro {
+            applicationIdSuffix ".periodictablepro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/periodictablepro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }

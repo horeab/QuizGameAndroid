@@ -18,4 +18,8 @@ public abstract class CampaignGameDependencyManager extends SubGameDependencyMan
 
     public abstract <T extends Enum<T> & QuestionDifficulty> Class<T> getQuestionDifficultyTypeEnum();
 
+    public QuestionConfigFileHandler getQuestionConfigFileHandler(){
+        return new QuestionConfigFileHandler();
+    }
+
 }
