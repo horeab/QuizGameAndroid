@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">L\'impiccato</string>
+    <string name="language">it</string>
+    <string name="game_id">hangmanarena</string>
+
+    <string name="admob_banner_id">ca-app-pub-9432399956064043/7769668172</string>
+    <string name="admob_inter_id">ca-app-pub-9432399956064043/3036216245</string>
+    <string name="admob_video_id">ca-app-pub-9432399956064043/5143504839</string>
+    <string name="admob_app_id">ca-app-pub-9432399956064043~2708913184</string>
+
+    <bool name="google_facebook_login_enabled">false</bool>
+    <bool name="isPro">false</bool>
+</resources>

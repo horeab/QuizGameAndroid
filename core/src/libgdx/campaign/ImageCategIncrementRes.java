@@ -10,10 +10,19 @@ public class ImageCategIncrementRes extends IncrementingRes {
     private QuestionCategory questionCategory;
 
     public ImageCategIncrementRes(int beginIndex, int endIndex, QuestionCategory questionCategory, String imgExtension) {
+        this(beginIndex, endIndex, questionCategory, imgExtension, "images");
+    }
+
+
+    public ImageCategIncrementRes(int beginIndex, int endIndex, QuestionCategory questionCategory, String imgExtension, String imagesFolderName) {
         super(beginIndex, endIndex,
-                CampaignGame.getInstance().getAppInfoService().getImplementationGameResourcesFolder() + "questions/images/" + getCategNr(questionCategory) + "/%s." + imgExtension,
+                CampaignGame.getInstance().getAppInfoService().getImplementationGameResourcesFolder() + "questions/" + imagesFolderName + "/" + getCategNr(questionCategory) + "/%s." + imgExtension,
                 "img_" + getCategNr(questionCategory) + "_%s");
         this.questionCategory = questionCategory;
+    }
+
+    public ImageCategIncrementRes(int index, QuestionCategory questionCategory, String imgExtension, String imagesFolderName) {
+        this(index, index, questionCategory, imgExtension, imagesFolderName);
     }
 
     public ImageCategIncrementRes(int index, QuestionCategory questionCategory, String imgExtension) {

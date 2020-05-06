@@ -46,12 +46,12 @@ public class CampaignStoreService {
         return levels;
     }
 
-    public void putFreeText(String freeText) {
-        preferencesService.putString(formFreeTextKey(), getFreeText() + TEXT_SPLIT + freeText);
+    public void putJson(String json) {
+        preferencesService.putString(formJsonKey(), json);
     }
 
-    public String getFreeText() {
-        return preferencesService.getPreferences().getString(formFreeTextKey(), "");
+    public String getJson() {
+        return preferencesService.getPreferences().getString(formJsonKey(), "");
     }
 
     public void putQuestionPlayed(String questionId) {
@@ -117,8 +117,8 @@ public class CampaignStoreService {
         preferencesService.putInteger(formCampaignLevelStatusKey(campaignLevelEnum), campaignLevelStatusEnum.getStatus());
     }
 
-    private String formFreeTextKey() {
-        return "FreeTextKey";
+    private String formJsonKey() {
+        return "JsonKey(";
     }
 
     private String formQuestionPlayedKey() {

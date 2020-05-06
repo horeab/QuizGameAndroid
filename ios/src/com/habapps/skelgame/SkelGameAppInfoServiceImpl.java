@@ -13,8 +13,22 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
     public SkelGameAppInfoServiceImpl(IOSLauncher iosLauncher) {
         this.iosLauncher = iosLauncher;
     }
+
+    /**
+     ******
+     ******
+     */
     @Override
     public boolean isPortraitMode() {
+        return true;
+    }
+
+    /**
+     ******
+     ******
+     */
+    @Override
+    public boolean isProVersion() {
         return false;
     }
 
@@ -33,10 +47,6 @@ public class SkelGameAppInfoServiceImpl implements AppInfoService {
         return iosLauncher.getGameProperties().getGameIdEnum().name();
     }
 
-    @Override
-    public boolean isProVersion() {
-        return true;
-    }
 
     @Override
     public String getAppName() {

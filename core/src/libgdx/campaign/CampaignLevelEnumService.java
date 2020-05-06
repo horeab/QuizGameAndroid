@@ -42,10 +42,10 @@ public class CampaignLevelEnumService {
     }
 
     public QuestionConfig getQuestionConfig(int nrOfQuestions, int nrOfHints) {
-        QuestionDifficulty difficulty = (QuestionDifficulty) EnumUtils.getEnumValue(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionDifficultyTypeEnum(), "_" + getDifficulty());
+        QuestionDifficulty difficulty = getDifficultyEnum();
         QuestionConfig questionConfig;
         if (getCategory() != null) {
-            QuestionCategory category = (QuestionCategory) EnumUtils.getEnumValue(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionCategoryTypeEnum(), "cat" + getCategory());
+            QuestionCategory category = getCategoryEnum();
             questionConfig = new QuestionConfig(difficulty, category);
         } else {
             questionConfig = new QuestionConfig(difficulty);
@@ -53,6 +53,14 @@ public class CampaignLevelEnumService {
         questionConfig.setH(nrOfHints);
         questionConfig.setA(nrOfQuestions);
         return questionConfig;
+    }
+
+    public QuestionDifficulty getDifficultyEnum() {
+        return (QuestionDifficulty) EnumUtils.getEnumValue(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionDifficultyTypeEnum(), "_" + getDifficulty());
+    }
+
+    public QuestionCategory getCategoryEnum() {
+        return (QuestionCategory) EnumUtils.getEnumValue(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionCategoryTypeEnum(), "cat" + getCategory());
     }
 
     public QuestionConfig getQuestionConfig(int nrOfQuestions) {
@@ -74,7 +82,6 @@ public class CampaignLevelEnumService {
     public Integer getCategory() {
         return getCategory(campaignLevel.getName());
     }
-
 
     public Res getIcon() {
         return (SpecificResource) EnumUtils.getEnumValue(Game.getInstance().getSubGameDependencyManager().getSpecificResourceTypeEnum(), "campaign_level_" + getDifficulty() + "_" + getCategory());

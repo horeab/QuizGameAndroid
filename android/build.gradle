@@ -23,6 +23,18 @@ android {
         hangmanPro {
             assets.srcDirs = ['assets/tournament_resources/implementations/hangman', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        hangmanro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/hangmanarena', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        hangmande {
+            assets.srcDirs = ['assets/tournament_resources/implementations/hangmanarena', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        hangmanit {
+            assets.srcDirs = ['assets/tournament_resources/implementations/hangmanarena', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        hangmanfr {
+            assets.srcDirs = ['assets/tournament_resources/implementations/hangmanarena', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
         kennstde {
             assets.srcDirs = ['assets/tournament_resources/implementations/kennstde', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
@@ -55,6 +67,12 @@ android {
         }
         periodictablePro {
             assets.srcDirs = ['assets/tournament_resources/implementations/periodictable', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        flags {
+            assets.srcDirs = ['assets/tournament_resources/implementations/flags', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        flagsPro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/flags', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
     }
     lintOptions {
@@ -123,6 +141,38 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/hangmanpro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        hangmanro {
+            applicationIdSuffix ".hangmanro"
+            versionCode 1
+            versionName "1.0"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/hangmanro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        hangmande {
+            applicationIdSuffix ".hangmande"
+            versionCode 1
+            versionName "1.0"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/hangmande_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        hangmanit {
+            applicationIdSuffix ".hangmanit"
+            versionCode 1
+            versionName "1.0"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/hangmanit_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        hangmanfr {
+            applicationIdSuffix ".hangmanfr"
+            versionCode 1
+            versionName "1.0"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/hangmanfr_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
         kennstde {
@@ -211,6 +261,22 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/periodictablepro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        flags {
+            applicationIdSuffix ".flags"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/flags_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        flagsPro {
+            applicationIdSuffix ".flagspro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/flagspro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }
