@@ -1,7 +1,7 @@
 package libgdx.utils.startgame;
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+//import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+//import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -21,14 +21,14 @@ public class StartGame {
     private static final Pair<Integer, Integer> z = new ImmutablePair<>(1500, 1500);
 
     public static void main(Game game, String[] args) {
-        LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-        //landscape
-//        Pair<Integer, Integer> V = s;
-//        Pair<Integer, Integer> V = z;
-        //portrait
-        Pair<Integer, Integer> V = t;
-        cfg.height = V.getLeft();
-        cfg.width = V.getRight();
-        new LwjglApplication(game, cfg);
+//        LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
+//        //landscape
+////        Pair<Integer, Integer> V = s;
+////        Pair<Integer, Integer> V = z;
+//        //portrait
+//        Pair<Integer, Integer> V = t;
+//        cfg.height = V.getLeft();
+//        cfg.width = V.getRight();
+//        new LwjglApplication(game, cfg);
     }
 }

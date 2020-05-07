@@ -22,6 +22,7 @@ import com.habapps.service.SkelGameAppInfoServiceImpl;
 
 import libgdx.game.Game;
 import libgdx.implementations.astronomy.AstronomyGame;
+import libgdx.implementations.flags.FlagsGame;
 import libgdx.implementations.hangmanarena.HangmanArenaGame;
 import libgdx.utils.Utils;
 
@@ -30,7 +31,7 @@ public class AndroidLauncher extends AndroidApplication {
     public static final int ID_AD_BANNER = 1111;
 
     private SkelGameAppInfoServiceImpl appInfoService;
-    private HangmanArenaGame game;
+    private FlagsGame game;
     private AdView bannerAdview;
 
     private InterstitialAd interstitialAd;
@@ -90,7 +91,7 @@ public class AndroidLauncher extends AndroidApplication {
 
 
     private View createGameView() {
-        game = new HangmanArenaGame(appInfoService);
+        game = new FlagsGame(appInfoService);
 //        game.purchaseManager = new DefaultPurchaseManager();
         game.purchaseManager = new PurchaseManagerGoogleBilling(this);
         return initializeForView(
