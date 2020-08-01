@@ -21,7 +21,7 @@
       <skipPngCrush>true</skipPngCrush>
     </resource>
     <resource>
-      <directory>../android/assets/tournament_resources/implementations/flags</directory>
+      <directory>../android/assets/tournament_resources/implementations/astronomy</directory>
       <includes>
         <include>**</include>
       </includes>

@@ -264,7 +264,7 @@ android {
         }
 /////////////////////////////////////////////////////////////////////////////
         flags {
-            applicationIdSuffix ".flags"
+            applicationIdSuffix ".worldflags"
             versionCode 1
             versionName "1.00"
             dimension "game"
@@ -272,7 +272,7 @@ android {
         }
 /////////////////////////////////////////////////////////////////////////////
         flagsPro {
-            applicationIdSuffix ".flagspro"
+            applicationIdSuffix ".worldflagspro"
             versionCode 1
             versionName "1.00"
             dimension "game"

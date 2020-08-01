@@ -3,7 +3,6 @@ package libgdx.implementations.skelgame;
 import libgdx.controls.popup.ProVersionPopup;
 import libgdx.game.Game;
 import libgdx.graphics.GraphicUtils;
-import libgdx.implementations.geoquiz.QuizGame;
 import libgdx.resources.MainResource;
 import libgdx.resources.dimen.MainDimen;
 import libgdx.resources.gamelabel.MainGameLabel;
@@ -22,15 +21,8 @@ public class QuizProVersionPopup extends ProVersionPopup {
     }
 
     @Override
-    protected void addText() {
-        float dimen = MainDimen.horizontal_general_margin.getDimen() * 15;
-        getContentTable().add(GraphicUtils.getImage(MainResource.sound_off)).height(dimen).width(dimen);
-        super.addText();
-    }
-
-    @Override
     public void hide() {
         super.hide();
-        QuizGame.getInstance().getScreenManager().showMainScreen();
+        Game.getInstance().getScreenManager().showMainScreen();
     }
 }
