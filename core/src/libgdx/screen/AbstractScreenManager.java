@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 
+import libgdx.controls.animations.ActorAnimation;
 import libgdx.controls.label.MyWrappedLabel;
 import libgdx.controls.label.MyWrappedLabelConfigBuilder;
 import libgdx.game.Game;
@@ -50,7 +51,7 @@ public abstract class AbstractScreenManager {
         SequenceAction actionToExecute = Actions.action(SequenceAction.class);
         if (game.getScreen() == null || !newScreen.getClass().equals(game.getScreen().getClass())) {
             newScreen.getRoot().getColor().a = 0;
-            actionToExecute.addAction(Actions.fadeIn(0.5f));
+            actionToExecute.addAction(Actions.fadeIn(0.0f));
         }
         actionToExecute.addAction(executeScreenBuildStageAsync(newScreen));
         actionToExecute.addAction(removeLoadingLabelAction(newScreen, loadingLabel));
@@ -94,6 +95,7 @@ public abstract class AbstractScreenManager {
         loadingLabel.setFontConfig(new FontConfig(FontConfig.FONT_SIZE));
         loadingLabel.setName(LOADING_LABEL_NAME);
         loadingLabel.setFontScale(Game.getInstance().getAppInfoService().isPortraitMode() ? FontManager.getNormalBigFontDim() : FontManager.getBigFontDim());
+        new ActorAnimation(loadingLabel, newScreen).animateFadeIn(1f);
         ActorPositionManager.setActorCenterScreen(loadingLabel);
         newScreen.addActor(loadingLabel);
         return loadingLabel;

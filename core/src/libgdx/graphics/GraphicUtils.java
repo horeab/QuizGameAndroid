@@ -2,14 +2,20 @@ package libgdx.graphics;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+
 import libgdx.game.Game;
+import libgdx.resources.MainResource;
 import libgdx.resources.Res;
 import libgdx.utils.ScreenDimensionsManager;
 
@@ -23,11 +29,21 @@ public class GraphicUtils {
         return new Image(new TextureRegionDrawable(new TextureRegion(texture)));
     }
 
+    public static Drawable getColorBackground(Color color) {
+        Sprite sprite = new Sprite(GraphicUtils.getTexture(MainResource.white_full_background));
+        sprite.setColor(color);
+        return new SpriteDrawable(sprite);
+    }
+
     public static Texture getTexture(Res resource) {
         Res resToProcess = Game.getInstance().getMainDependencyManager().createResourceService().getOverridableRes(resource);
         Texture texture = getAssetManager(resToProcess).get(resToProcess.getPath(), Texture.class);
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         return texture;
+    }
+
+    public static NinePatchDrawable getNinePatchIdentical(Res resource) {
+        return new NinePatchDrawable(new NinePatch(getTexture(resource)));
     }
 
     private static AssetManager getAssetManager(Res resource) {

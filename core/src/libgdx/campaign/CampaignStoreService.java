@@ -101,7 +101,7 @@ public class CampaignStoreService {
     }
 
 
-    void updateScoreWon(CampaignLevel campaignLevelEnum, long scoreWon) {
+    public void updateScoreWon(CampaignLevel campaignLevelEnum, long scoreWon) {
         preferencesService.putLong(formCampaignLevelScoreWonKey(campaignLevelEnum), scoreWon);
     }
 

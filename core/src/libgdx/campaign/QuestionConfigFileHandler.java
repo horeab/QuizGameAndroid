@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import libgdx.game.Game;
-import libgdx.implementations.skelgame.SkelGame;
 import libgdx.utils.EnumUtils;
 
 public class QuestionConfigFileHandler {

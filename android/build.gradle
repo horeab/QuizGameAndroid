@@ -1,6 +1,6 @@
 android {
     buildToolsVersion "28.0.3"
-    compileSdkVersion 28
+    compileSdkVersion 29
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -74,6 +74,12 @@ android {
         flagsPro {
             assets.srcDirs = ['assets/tournament_resources/implementations/flags', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        countries {
+            assets.srcDirs = ['assets/tournament_resources/implementations/countries', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        countriesPro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/countries', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -96,7 +102,7 @@ android {
     defaultConfig {
         applicationId "com.habapps"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -277,6 +283,22 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/flagspro_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        countries {
+            applicationIdSuffix ".countries"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/countries_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        countriesPro {
+            applicationIdSuffix ".countriespro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/countriespro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }

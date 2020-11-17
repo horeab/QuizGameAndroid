@@ -3,20 +3,20 @@ package libgdx.controls.button.builders;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import libgdx.controls.button.ButtonBuilder;
+import libgdx.controls.button.MainButtonSize;
 import libgdx.controls.button.MainButtonSkin;
 import libgdx.controls.button.MyButton;
 import libgdx.preferences.SettingsService;
-import libgdx.resources.MainResource;
-import libgdx.resources.Res;
-import libgdx.screen.AbstractScreen;
 
 public class SoundIconButtonBuilder {
 
     private SettingsService settingsService = new SettingsService();
 
     public MyButton createSoundButton() {
-        final MyButton button = new libgdx.controls.button.ButtonBuilder("")
+        final MyButton button = new ButtonBuilder("")
                 .setButtonSkin(getButtonSkin())
+                .setFixedButtonSize(MainButtonSize.SOUND_BUTTON)
                 .build();
         button.addListener(new ChangeListener() {
 
@@ -30,6 +30,6 @@ public class SoundIconButtonBuilder {
     }
 
     private MainButtonSkin getButtonSkin() {
-        return settingsService.isSoundOn() ? MainButtonSkin.SOUND_OFF : MainButtonSkin.SOUND_ON;
+        return settingsService.isSoundOn() ? MainButtonSkin.SOUND_ON : MainButtonSkin.SOUND_OFF;
     }
 }

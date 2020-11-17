@@ -21,9 +21,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.habapps.service.SkelGameAppInfoServiceImpl;
 
 import libgdx.game.Game;
-import libgdx.implementations.astronomy.AstronomyGame;
-import libgdx.implementations.flags.FlagsGame;
-import libgdx.implementations.hangmanarena.HangmanArenaGame;
+import libgdx.implementations.countries.CountriesGame;
 import libgdx.utils.Utils;
 
 public class AndroidLauncher extends AndroidApplication {
@@ -31,7 +29,7 @@ public class AndroidLauncher extends AndroidApplication {
     public static final int ID_AD_BANNER = 1111;
 
     private SkelGameAppInfoServiceImpl appInfoService;
-    private FlagsGame game;
+    private CountriesGame game;
     private AdView bannerAdview;
 
     private InterstitialAd interstitialAd;
@@ -91,7 +89,7 @@ public class AndroidLauncher extends AndroidApplication {
 
 
     private View createGameView() {
-        game = new FlagsGame(appInfoService);
+        game = new CountriesGame(appInfoService);
 //        game.purchaseManager = new DefaultPurchaseManager();
         game.purchaseManager = new PurchaseManagerGoogleBilling(this);
         return initializeForView(

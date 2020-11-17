@@ -8,7 +8,7 @@ import libgdx.implementations.skelgame.gameservice.QuizQuestionCategory;
 
 public enum JudeteleRomCategoryEnum implements QuizQuestionCategory {
 
-    cat0(ImageClickGameCreatorDependencies.class),//Find on flags_icon
+    cat0(ImageClickGameCreatorDependencies.class),//Find on map
     cat1(DependentQuizGameCreatorDependencies.class),//Car ID
     cat2(DependentQuizGameCreatorDependencies.class),//Tourist attractions
     cat3(DependentQuizGameCreatorDependencies.class),//Trivia

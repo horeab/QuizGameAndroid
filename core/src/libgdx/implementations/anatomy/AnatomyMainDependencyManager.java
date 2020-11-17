@@ -5,11 +5,11 @@ import libgdx.controls.popup.RatingService;
 import libgdx.game.MainDependencyManager;
 import libgdx.implementations.skelgame.GameIdEnum;
 import libgdx.implementations.skelgame.GameRatingService;
-import libgdx.implementations.skelgame.SkelGameLabel;
+import libgdx.skelgameimpl.skelgame.SkelGameLabel;
 import libgdx.resources.Resource;
 import libgdx.resources.ResourceService;
 import libgdx.screen.AbstractScreen;
-import libgdx.screens.implementations.anatomy.AnatomyScreenManager;
+import libgdx.implementations.screens.implementations.anatomy.AnatomyScreenManager;
 import libgdx.transactions.TransactionsService;
 
 public class AnatomyMainDependencyManager extends MainDependencyManager<AnatomyScreenManager, AbstractScreen, SkelGameLabel, Resource, GameIdEnum> {

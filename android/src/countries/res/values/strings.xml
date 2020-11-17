@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">World Countries</string>
+    <string name="language">en</string>
+    <string name="game_id">countries</string>
+
+    <string name="admob_banner_id">ca-app-pub-9432399956064043/7372741338</string>
+    <string name="admob_inter_id">ca-app-pub-9432399956064043/4664825121</string>
+    <string name="admob_video_id">ca-app-pub-9432399956064043/6059659668</string>
+    <string name="admob_app_id">ca-app-pub-9432399956064043~4882309367</string>
+
+    <bool name="google_facebook_login_enabled">false</bool>
+    <bool name="isPro">false</bool>
+</resources>

@@ -21,7 +21,7 @@
       <skipPngCrush>true</skipPngCrush>
     </resource>
     <resource>
-      <directory>../android/assets/tournament_resources/implementations/astronomy</directory>
+      <directory>../android/assets/tournament_resources/implementations/countries</directory>
       <includes>
         <include>**</include>
       </includes>

@@ -1,5 +1,6 @@
 package libgdx.implementations.periodictable;
 
+
 import libgdx.campaign.CampaignLevel;
 
 public enum PeriodicTableCampaignLevelEnum implements CampaignLevel {

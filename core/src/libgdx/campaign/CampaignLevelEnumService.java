@@ -2,9 +2,7 @@ package libgdx.campaign;
 
 import libgdx.controls.button.ButtonSkin;
 import libgdx.game.Game;
-import libgdx.implementations.skelgame.SkelGameButtonSkin;
 import libgdx.resources.Res;
-import libgdx.resources.Resource;
 import libgdx.resources.SpecificResource;
 import libgdx.resources.gamelabel.SpecificPropertiesUtils;
 import libgdx.utils.EnumUtils;
@@ -61,6 +59,10 @@ public class CampaignLevelEnumService {
 
     public QuestionCategory getCategoryEnum() {
         return (QuestionCategory) EnumUtils.getEnumValue(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionCategoryTypeEnum(), "cat" + getCategory());
+    }
+
+    public static QuestionCategory getCategoryEnum(String name) {
+        return (QuestionCategory) EnumUtils.getEnumValue(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionCategoryTypeEnum(), "cat" + getCategory(name));
     }
 
     public QuestionConfig getQuestionConfig(int nrOfQuestions) {

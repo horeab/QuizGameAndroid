@@ -1,7 +1,7 @@
 package libgdx.game;
 
 import libgdx.screen.AbstractScreenManager;
-import libgdx.screens.ScreenTypeEnum;
+import libgdx.skelgameimpl.screens.ScreenTypeEnum;
 
 public class ScreenManager extends AbstractScreenManager {
 
