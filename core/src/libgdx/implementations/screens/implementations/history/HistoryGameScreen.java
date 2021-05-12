@@ -30,11 +30,10 @@ import libgdx.graphics.GraphicUtils;
 import libgdx.implementations.history.HistoryCampaignLevelEnum;
 import libgdx.implementations.history.HistoryCategoryEnum;
 import libgdx.implementations.history.HistoryPreferencesService;
+import libgdx.implementations.history.HistorySpecificResource;
 import libgdx.implementations.screens.GameScreen;
 import libgdx.implementations.skelgame.gameservice.GameContext;
 import libgdx.implementations.skelgame.question.GameQuestionInfo;
-import libgdx.resources.FontManager;
-import libgdx.resources.MainResource;
 import libgdx.resources.dimen.MainDimen;
 import libgdx.resources.gamelabel.MainGameLabel;
 import libgdx.screen.AbstractScreen;
@@ -42,6 +41,7 @@ import libgdx.skelgameimpl.skelgame.SkelGameLabel;
 import libgdx.utils.ScreenDimensionsManager;
 import libgdx.utils.Utils;
 import libgdx.utils.model.FontColor;
+import libgdx.utils.model.FontConfig;
 
 public class HistoryGameScreen extends GameScreen<HistoryScreenManager> {
 
@@ -50,19 +50,21 @@ public class HistoryGameScreen extends GameScreen<HistoryScreenManager> {
     private Integer scrollToOption;
     private float optionHeight;
     private GameContext gameContext;
-    private Integer firstOpenQuestionIndex = 0;
+    public Integer firstOpenQuestionIndex = 0;
     private Integer currentQuestion = 0;
     private Table questionTable;
-    private HistoryPreferencesService historyPreferencesService = new HistoryPreferencesService();
+    public HistoryPreferencesService historyPreferencesService;
     private HistoryQuestionContainerCreatorService questionContainerCreatorService;
+    public int totalHints = 6;
 
     public HistoryGameScreen(GameContext gameContext, CampaignLevel campaignLevel) {
         super(gameContext);
+        historyPreferencesService = new HistoryPreferencesService();
         this.gameContext = gameContext;
         if (gameContext.getQuestion().getQuestionCategory() == HistoryCategoryEnum.cat0) {
-            questionContainerCreatorService = new HistoryTimelineQuestionContainerCreatorService(gameContext, this);
+            questionContainerCreatorService = new HistoryTimelineQuestionContainerCreatorService(gameContext, this, historyPreferencesService);
         } else {
-            questionContainerCreatorService = new HistoryGreatPowersQuestionContainerCreatorService(gameContext, this);
+            questionContainerCreatorService = new HistoryGreatPowersQuestionContainerCreatorService(gameContext, this, historyPreferencesService);
         }
         Collections.reverse(gameContext.getCurrentUserGameUser().getAllQuestionInfos());
         initNextQuestion();
@@ -88,11 +90,11 @@ public class HistoryGameScreen extends GameScreen<HistoryScreenManager> {
             addAction(Actions.sequence(Actions.delay(Math.max(qFadeOutDuration, qMoveDuration)), Utils.createRunnableAction(new Runnable() {
                 @Override
                 public void run() {
-                    addQuestionText();
+                    addQuestionText(0.1f);
                 }
             })));
         } else {
-            addQuestionText();
+            addQuestionText(1.5f);
         }
     }
 
@@ -183,14 +185,14 @@ public class HistoryGameScreen extends GameScreen<HistoryScreenManager> {
         Table table = new Table();
         table.setFillParent(true);
         scrollPane.setScrollingDisabled(true, false);
-        table.add(questionContainerCreatorService.createHeader()).width(ScreenDimensionsManager.getScreenWidth()).row();
+        table.add(questionContainerCreatorService.createHeader()).width(ScreenDimensionsManager.getScreenWidth()).height(ScreenDimensionsManager.getScreenHeightValue(10)).row();
         questionTable = new Table();
         table.add(questionTable).height(ScreenDimensionsManager.getScreenHeightValue(10)).padBottom(MainDimen.vertical_general_margin.getDimen()).row();
         goToNextQuestion();
         table.add(scrollPane).expand();
         addActor(table);
-        new BackButtonBuilder().addHoverBackButton(this);
-        table.setBackground(GraphicUtils.getNinePatch(MainResource.btn_menu_up));
+        new BackButtonBuilder().addHoverBackButton(this, MainDimen.horizontal_general_margin.getDimen() / 2, BackButtonBuilder.getY()
+                - MainDimen.vertical_general_margin.getDimen() / 2);
     }
 
     public Integer getCurrentQuestion() {
@@ -201,13 +203,17 @@ public class HistoryGameScreen extends GameScreen<HistoryScreenManager> {
         return gameContext.getCurrentUserGameUser().getAllQuestionInfos().get(questionContainerCreatorService.getQuestionNrInOrder().indexOf(currentQuestion));
     }
 
-    private void addQuestionText() {
+    private void addQuestionText(float duration) {
+        String questionText = questionContainerCreatorService.getGameService().getQuestionText(getCurrentGameQuestionInfo().getQuestion().getQuestionString());
         MyWrappedLabel questionLabel = new MyWrappedLabel(new MyWrappedLabelConfigBuilder()
-                .setText(questionContainerCreatorService.getGameService().getQuestionText(getCurrentGameQuestionInfo().getQuestion().getQuestionString()))
-                .setFontScale(FontManager.calculateMultiplierStandardFontSize(1.2f)).build());
+                .setText(questionText)
+                .setWrappedLineLabel(ScreenDimensionsManager.getScreenWidth())
+                .setFontConfig(new FontConfig(
+                        FontColor.BLACK.getColor(),
+                        FontConfig.FONT_SIZE * (questionText.length() > 45 ? 1.1f : 1.4f))).build());
         questionTable.add(questionLabel);
         questionLabel.setVisible(false);
-        Utils.fadeInActor(questionLabel, 0.1f);
+        Utils.fadeInActor(questionLabel, duration);
     }
 
     @Override

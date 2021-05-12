@@ -13,6 +13,7 @@ import libgdx.campaign.CampaignService;
 import libgdx.campaign.CampaignStoreLevel;
 import libgdx.campaign.CampaignStoreService;
 import libgdx.campaign.QuestionConfig;
+import libgdx.constants.Language;
 import libgdx.controls.button.ButtonBuilder;
 import libgdx.controls.button.MyButton;
 import libgdx.controls.button.builders.BackButtonBuilder;
@@ -55,7 +56,7 @@ public class HangmanCampaignScreen extends AbstractScreen<HangmanScreenManager> 
         addActor(table);
         new BackButtonBuilder().addHoverBackButton(this);
         if (!Utils.isValidExtraContent()) {
-            new UnlockButtonBuilder().addHoverUnlockButton(getAbstractScreen(), new Runnable() {
+            new UnlockButtonBuilder().addHoverUnlockButton(getAbstractScreen(), Language.en.name(), "Unlock extra categories and remove Ads", new Runnable() {
                 @Override
                 public void run() {
                     screenManager.showCampaignScreen();
@@ -106,7 +107,7 @@ public class HangmanCampaignScreen extends AbstractScreen<HangmanScreenManager> 
                 public void changed(ChangeEvent event, Actor actor) {
                     CampaignLevel campaignLevel = getHangmanCampaignLevelEnum(maxLevelFinished, finalIndex);
                     CampaignLevelEnumService enumService = new CampaignLevelEnumService(campaignLevel);
-                    QuestionConfig questionConfig = enumService.getQuestionConfig(HangmanGameScreen.TOTAL_QUESTIONS);
+                    QuestionConfig questionConfig = enumService.getQuestionConfig(HangmanGameScreen.TOTAL_QUESTIONS, 5);
                     //if this category, the questions should be mixed from all other categs
                     if (enumService.getCategory() == HangmanQuestionCategoryEnum.cat5.getIndex()) {
                         List<String> questionCategoryStringList = new ArrayList<>();
@@ -125,7 +126,7 @@ public class HangmanCampaignScreen extends AbstractScreen<HangmanScreenManager> 
                     .height(ScreenDimensionsManager.getScreenHeightValue(27))
                     .width(ScreenDimensionsManager.getScreenWidthValue(45));
             if (!categBtn.isDisabled() && allCampaignLevelStores.size() > 2 && !Utils.isValidExtraContent()) {
-                btnTable = inAppPurchaseTable.create(btnTable, new Runnable() {
+                btnTable = inAppPurchaseTable.create(btnTable, Language.en.name(), "Unlock extra categories and remove Ads", new Runnable() {
                     @Override
                     public void run() {
                         screenManager.showCampaignScreen();

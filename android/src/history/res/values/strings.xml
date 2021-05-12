@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">History Game</string>
+    <string name="language">en</string>
+    <string name="game_id">history</string>
+
+    <string name="admob_banner_id">ca-app-pub-9432399956064043/5185561694</string>
+    <string name="admob_inter_id">ca-app-pub-9432399956064043/3186084311</string>
+    <string name="admob_video_id">ca-app-pub-9432399956064043/2882654377</string>
+    <string name="admob_app_id">ca-app-pub-9432399956064043~2910574531</string>
+
+    <bool name="google_facebook_login_enabled">false</bool>
+    <bool name="isPro">false</bool>
+</resources>

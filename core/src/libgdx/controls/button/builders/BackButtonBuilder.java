@@ -39,13 +39,21 @@ public class BackButtonBuilder {
     public MyButton addHoverBackButton(AbstractScreen screen, float x, float y) {
         MyButton screenBackButton = new BackButtonBuilder().createScreenBackButton(screen);
         screenBackButton.setPosition(x, y);
-        if (Gdx.app.getType() == Application.ApplicationType.iOS) {
-            screen.addActor(screenBackButton);
-        }
+//        if (Gdx.app.getType() == Application.ApplicationType.iOS) {
+        screen.addActor(screenBackButton);
+//        }
         return screenBackButton;
     }
 
     public MyButton addHoverBackButton(AbstractScreen screen) {
-        return addHoverBackButton(screen, MainDimen.horizontal_general_margin.getDimen() * 2, ScreenDimensionsManager.getScreenHeight() - MainButtonSize.BACK_BUTTON.getHeight());
+        return addHoverBackButton(screen, getX(), getY());
+    }
+
+    public static float getX() {
+        return MainDimen.horizontal_general_margin.getDimen() * 2;
+    }
+
+    public static float getY() {
+        return ScreenDimensionsManager.getScreenHeight() - MainButtonSize.BACK_BUTTON.getHeight() * 1.5f;
     }
 }

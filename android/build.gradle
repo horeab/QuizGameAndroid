@@ -80,6 +80,12 @@ android {
         countriesPro {
             assets.srcDirs = ['assets/tournament_resources/implementations/countries', 'assets/tournament_resources/main', 'assets/main_resources/main']
         }
+        history {
+            assets.srcDirs = ['assets/tournament_resources/implementations/history', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
+        historyPro {
+            assets.srcDirs = ['assets/tournament_resources/implementations/history', 'assets/tournament_resources/main', 'assets/main_resources/main']
+        }
     }
     lintOptions {
         checkReleaseBuilds false
@@ -135,8 +141,8 @@ android {
 /////////////////////////////////////////////////////////////////////////////
         hangman {
             applicationIdSuffix ".hangman"
-            versionCode 5
-            versionName "1.4"
+            versionCode 7
+            versionName "1.6"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/hangman_icon"]
         }
@@ -239,16 +245,16 @@ android {
 /////////////////////////////////////////////////////////////////////////////
         astronomy {
             applicationIdSuffix ".astronomy"
-            versionCode 1
-            versionName "1.00"
+            versionCode 2
+            versionName "1.1"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/astronomy_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
         astronomyPro {
             applicationIdSuffix ".astronomypro"
-            versionCode 1
-            versionName "1.00"
+            versionCode 2
+            versionName "1.1"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/astronomypro_icon"]
         }
@@ -271,8 +277,8 @@ android {
 /////////////////////////////////////////////////////////////////////////////
         flags {
             applicationIdSuffix ".worldflags"
-            versionCode 1
-            versionName "1.00"
+            versionCode 2
+            versionName "1.1"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/flags_icon"]
         }
@@ -299,6 +305,23 @@ android {
             versionName "1.00"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/countriespro_icon"]
+        }
+
+/////////////////////////////////////////////////////////////////////////////
+        history {
+            applicationIdSuffix ".history"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/history_icon"]
+        }
+/////////////////////////////////////////////////////////////////////////////
+        historyPro {
+            applicationIdSuffix ".historypro"
+            versionCode 1
+            versionName "1.00"
+            dimension "game"
+            manifestPlaceholders = [appIcon: "@drawable/historypro_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
     }

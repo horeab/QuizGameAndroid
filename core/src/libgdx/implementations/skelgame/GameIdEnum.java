@@ -6,6 +6,7 @@ import libgdx.game.SubGameDependencyManager;
 import libgdx.implementations.anatomy.AnatomyDependencyManager;
 import libgdx.implementations.animals.AnimalsDependencyManager;
 import libgdx.implementations.astronomy.AstronomyDependencyManager;
+import libgdx.implementations.astronomy.AstronomyGame;
 import libgdx.implementations.conthistory.ConthistoryDependencyManager;
 import libgdx.implementations.countries.CountriesDependencyManager;
 import libgdx.implementations.flags.FlagsDependencyManager;
@@ -15,12 +16,14 @@ import libgdx.implementations.hangmanarena.HangmanArenaDependencyManager;
 import libgdx.implementations.history.HistoryDependencyManager;
 import libgdx.implementations.judetelerom.JudeteleRomDependencyManager;
 import libgdx.implementations.kennstde.KennstDeDependencyManager;
+import libgdx.implementations.math.MathDependencyManager;
 import libgdx.implementations.paintings.PaintingsDependencyManager;
 import libgdx.implementations.periodictable.PeriodicTableDependencyManager;
 
 public enum GameIdEnum implements GameId {
 
     flags(FlagsDependencyManager.class),
+    math(MathDependencyManager.class),
     judetelerom(JudeteleRomDependencyManager.class),
     countries(CountriesDependencyManager.class),
     anatomy(AnatomyDependencyManager.class),

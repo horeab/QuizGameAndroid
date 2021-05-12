@@ -2,48 +2,51 @@ package libgdx.implementations.screens.implementations.astronomy;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-
 import libgdx.campaign.*;
+import libgdx.controls.animations.ActorAnimation;
 import libgdx.controls.button.MyButton;
 import libgdx.controls.button.builders.ImageButtonBuilder;
 import libgdx.controls.label.MyWrappedLabel;
 import libgdx.controls.label.MyWrappedLabelConfigBuilder;
-import libgdx.controls.labelimage.InAppPurchaseTable;
 import libgdx.game.Game;
 import libgdx.graphics.GraphicUtils;
 import libgdx.implementations.astronomy.AstronomyCampaignLevelEnum;
-import libgdx.implementations.astronomy.AstronomyGame;
+import libgdx.implementations.astronomy.AstronomyCategoryEnum;
 import libgdx.implementations.astronomy.AstronomySpecificResource;
-import libgdx.implementations.skelgame.*;
+import libgdx.implementations.astronomy.spec.AstronomyPreferencesManager;
+import libgdx.implementations.astronomy.spec.Planet;
+import libgdx.implementations.astronomy.spec.PlanetsUtil;
+import libgdx.implementations.skelgame.GameButtonSize;
+import libgdx.implementations.skelgame.LevelFinishedPopup;
 import libgdx.implementations.skelgame.gameservice.GameContextService;
 import libgdx.resources.FontManager;
+import libgdx.resources.MainResource;
 import libgdx.resources.dimen.MainDimen;
 import libgdx.resources.gamelabel.MainGameLabel;
+import libgdx.resources.gamelabel.SpecificPropertiesUtils;
 import libgdx.screen.AbstractScreen;
-import libgdx.implementations.screens.implementations.anatomy.AnatomyGameScreen;
 import libgdx.skelgameimpl.skelgame.SkelGameLabel;
 import libgdx.skelgameimpl.skelgame.SkelGameRatingService;
 import libgdx.utils.ScreenDimensionsManager;
+import libgdx.utils.SettingsUtils;
+import libgdx.utils.SoundUtils;
 import libgdx.utils.Utils;
 import libgdx.utils.model.FontColor;
 import libgdx.utils.model.FontConfig;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AstronomyCampaignScreen extends AbstractScreen<AstronomyScreenManager> {
 
+    public static final int NR_QUESTIONS_FIND_PLANET = 10;
     private CampaignService campaignService = new CampaignService();
-    private List<CampaignStoreLevel> allCampaignLevelStores;
-
-    public AstronomyCampaignScreen() {
-        allCampaignLevelStores = campaignService.processAndGetAllLevels();
-    }
-
+    private AstronomyPreferencesManager astronomyPreferencesManager = new AstronomyPreferencesManager();
+    public static final int TOTAL_STARS_TO_DISPLAY = 3;
 
     @Override
     public void buildStage() {
@@ -55,6 +58,9 @@ public class AstronomyCampaignScreen extends AbstractScreen<AstronomyScreenManag
         table.setFillParent(true);
         table.add(createAllTable()).expand();
         addActor(table);
+        SettingsUtils settingsUtils = new SettingsUtils();
+        settingsUtils.setSoundMusicButtonsTable(SoundUtils.createSoundMusicButtonsTable(AstronomySpecificResource.background_music));
+        settingsUtils.addSettingsTable(getAbstractScreen());
     }
 
     protected Stack createTitleStack(MyWrappedLabel titleLabel) {
@@ -62,24 +68,29 @@ public class AstronomyCampaignScreen extends AbstractScreen<AstronomyScreenManag
         Image image = GraphicUtils.getImage(AstronomySpecificResource.title_clouds_background);
         stack.addActor(image);
         stack.addActor(titleLabel);
+        stack.setWidth(ScreenDimensionsManager.getScreenWidth());
         return stack;
     }
 
     private Table createAllTable() {
+        new ActorAnimation(getAbstractScreen()).createScrollingBackground(MainResource.background_texture);
         Table table = new Table();
+        String appName = Game.getInstance().getAppInfoService().getAppName();
         MyWrappedLabel titleLabel = new MyWrappedLabel(new MyWrappedLabelConfigBuilder()
                 .setFontConfig(new FontConfig(
                         FontColor.LIGHT_GREEN.getColor(),
                         FontColor.BLACK.getColor(),
-                        FontConfig.FONT_SIZE * 2.4f,
+                        FontConfig.FONT_SIZE * (appName.length() >= 10 ? 2 : 2.4f),
                         4f))
-                .setText(Game.getInstance().getAppInfoService().getAppName()).build());
+                .setText(appName).build());
 
         float btnHeight = getBtnHeightValue();
         float dimen = MainDimen.vertical_general_margin.getDimen();
-        table.add(createTitleStack(titleLabel)).height(btnHeight / 2).padTop(dimen * 2).row();
+        Stack titleStack = createTitleStack(titleLabel);
+        table.add(titleStack).height(btnHeight / 2).width(titleStack.getWidth()).padTop(dimen * 3).row();
         long totalStarsWon = 0;
-        addCategButtons(table);
+        table.row();
+        table.add(addCategButtons()).height(ScreenDimensionsManager.getScreenHeightValue(80));
 
         if (campaignService.getFinishedCampaignLevels().size() == AstronomyCampaignLevelEnum.values().length) {
             CampaignStoreService campaignStoreService = new CampaignStoreService();
@@ -93,52 +104,112 @@ public class AstronomyCampaignScreen extends AbstractScreen<AstronomyScreenManag
         return table;
     }
 
-    private void addCategButtons(Table table) {
-        table.row();
+    private int getStarsBasedOnTotalLevels(int currentMaxLevels, int totalLevels) {
+        if (currentMaxLevels >= totalLevels) {
+            return TOTAL_STARS_TO_DISPLAY;
+        } else if (currentMaxLevels * 2 > totalLevels) {
+            return TOTAL_STARS_TO_DISPLAY - 1;
+        } else {
+            return 0;
+        }
+    }
+
+    private int getMaxLevelsForCampaignList(List<AstronomyCampaignLevelEnum> campaignLevelEnums, int totalQuestions) {
+        int maxLevels = 0;
+        for (AstronomyCampaignLevelEnum campaignLevelEnum : campaignLevelEnums) {
+            if (astronomyPreferencesManager
+                    .getLevelScore((AstronomyCategoryEnum) CampaignLevelEnumService.getCategoryEnum(campaignLevelEnum.getName()))
+                    >= totalQuestions) {
+                maxLevels++;
+            }
+        }
+        return maxLevels;
+    }
+
+    private Table addCategButtons() {
+        Table table = new Table();
         Table btnTable0 = new Table();
-        addButtonToTable(btnTable0, AstronomyCampaignLevelEnum.LEVEL_0_0);
-        btnTable0.add().width(ScreenDimensionsManager.getScreenWidthValue(10));
-        addButtonToTable(btnTable0, AstronomyCampaignLevelEnum.LEVEL_0_1);
-        table.add(btnTable0);
+        addButtonToTable(btnTable0, AstronomyGameType.SOLAR_SYSTEM);
+        btnTable0.add().width(ScreenDimensionsManager.getScreenWidthValue(20));
+        addButtonToTable(btnTable0, AstronomyGameType.ASTRONOMY_QUIZ);
+        table.add(btnTable0).padBottom(ScreenDimensionsManager.getScreenHeightValue(5));
         table.row();
         Table btnTable1 = new Table();
-        addButtonToTable(btnTable1, AstronomyCampaignLevelEnum.LEVEL_0_2);
+        addButtonToTable(btnTable1, AstronomyGameType.ASTRONOMY_IMAGES_QUIZ);
         btnTable1.add().width(ScreenDimensionsManager.getScreenWidthValue(20));
-        addButtonToTable(btnTable1, AstronomyCampaignLevelEnum.LEVEL_0_3);
-        table.add(btnTable1);
-        table.row();
-        Table btnTable2 = new Table();
-        addButtonToTable(btnTable2, AstronomyCampaignLevelEnum.LEVEL_0_4);
-        btnTable2.add().width(ScreenDimensionsManager.getScreenWidthValue(30));
-        addButtonToTable(btnTable2, AstronomyCampaignLevelEnum.LEVEL_0_5);
-        InAppPurchaseTable inAppPurchaseTable = new InAppPurchaseTable();
-        if (!Utils.isValidExtraContent()) {
-            btnTable2 = inAppPurchaseTable.createForProVersion(btnTable2);
-            btnTable2.setWidth(ScreenDimensionsManager.getScreenWidth());
-        }
-        table.add(btnTable2).width(btnTable2.getWidth()).padBottom(MainDimen.vertical_general_margin.getDimen() * 2);
-
+        addButtonToTable(btnTable1, AstronomyGameType.FIND_PLANET);
+        table.add(btnTable1).padBottom(ScreenDimensionsManager.getScreenHeightValue(20));
+        return table;
 
     }
 
-    private Cell<MyButton> addButtonToTable(Table table, AstronomyCampaignLevelEnum campaignLevel) {
-        MyButton categButton = createCategButton(campaignLevel);
-        return table.add(categButton).width(categButton.getWidth()).height(categButton.getHeight())
-                .padBottom(MainDimen.vertical_general_margin.getDimen() * 5f);
+    private void addButtonToTable(Table table, AstronomyGameType astronomyGameType) {
+        MyButton categButton = createCategButton(astronomyGameType);
+        Table btnTable = new Table();
+        btnTable.add(createStarsTable(astronomyGameType));
+        btnTable.row();
+        btnTable.add(categButton).colspan(3).width(categButton.getWidth()).height(categButton.getHeight());
+
+        table.add(btnTable).padBottom(MainDimen.vertical_general_margin.getDimen() * 5f);
     }
 
-    private MyButton createCategButton(final CampaignLevel campaignLevel) {
-        final int maxOpenedLevel = allCampaignLevelStores.size();
-        boolean locked = campaignLevel.getIndex() >= maxOpenedLevel;
-//        locked=false;
-        String labelText = new CampaignLevelEnumService(campaignLevel).getLabelText();
-        if (locked) {
-            labelText = "???";
+    private Table createStarsTable(AstronomyGameType astronomyGameType) {
+        int levelStars = getLevelNrOfStars(astronomyGameType);
+        Table table = new Table();
+        float sideDimen = ScreenDimensionsManager.getScreenWidthValue(7);
+        if (levelStars == TOTAL_STARS_TO_DISPLAY) {
+            addStarToTable(TOTAL_STARS_TO_DISPLAY, table, sideDimen, AstronomySpecificResource.star_green);
+        } else {
+            addStarToTable(levelStars, table, sideDimen, AstronomySpecificResource.star);
+            addStarToTable(TOTAL_STARS_TO_DISPLAY - levelStars, table, sideDimen, AstronomySpecificResource.star_disabled);
         }
-        MyButton categBtn = new ImageButtonBuilder(GameButtonSkin.valueOf("ASTRONOMY_CATEG" + campaignLevel.getIndex()), getAbstractScreen())
-                .animateZoomInZoomOut(!locked && maxOpenedLevel - 1 == campaignLevel.getIndex())
-                .setAnimateZoomInZoomOutAmount(0.05f)
-                .setFontScale(FontManager.getSmallFontDim())
+        return table;
+    }
+
+    private void addStarToTable(int to, Table table, float sideDimen, AstronomySpecificResource res) {
+        float horiz = MainDimen.horizontal_general_margin.getDimen();
+        float vert = MainDimen.vertical_general_margin.getDimen() / 2;
+        for (int i = 0; i < to; i++) {
+            table.add(GraphicUtils.getImage(res)).width(sideDimen).height(sideDimen)
+                    .padRight(horiz)
+                    .padBottom(vert);
+        }
+    }
+
+    private int getLevelNrOfStars(AstronomyGameType astronomyGameType) {
+        if (astronomyGameType == AstronomyGameType.ASTRONOMY_QUIZ) {
+            List<AstronomyCampaignLevelEnum> list = new ArrayList<>(AstronomyDetailedCampaignScreen.ASTRONOMY_QUIZ_CAMPAIGN_LEVELS.keySet());
+            int maxLevels = getMaxLevelsForCampaignList(list, AstronomyGameScreen.TOTAL_QUESTIONS);
+            return getStarsBasedOnTotalLevels(maxLevels, list.size());
+        } else if (astronomyGameType == AstronomyGameType.ASTRONOMY_IMAGES_QUIZ) {
+            List<AstronomyCampaignLevelEnum> list = new ArrayList<>(AstronomyDetailedCampaignScreen.ASTRONOMY_IMAGES_QUIZ_CAMPAIGN_LEVELS.keySet());
+            int maxLevels = getMaxLevelsForCampaignList(list, AstronomyGameScreen.TOTAL_QUESTIONS);
+            return getStarsBasedOnTotalLevels(maxLevels, list.size());
+        } else if (astronomyGameType == AstronomyGameType.FIND_PLANET) {
+            int maxLevels = astronomyPreferencesManager
+                    .getLevelScore((AstronomyCategoryEnum) CampaignLevelEnumService.getCategoryEnum(AstronomyCampaignLevelEnum.LEVEL_0_0.getName()));
+            return getStarsBasedOnTotalLevels(maxLevels, NR_QUESTIONS_FIND_PLANET);
+        } else if (astronomyGameType == AstronomyGameType.SOLAR_SYSTEM) {
+            List<Planet> allPlanets = PlanetsUtil.getAllPlanets();
+            int maxLevels = 0;
+            AstronomyPlanetsGameType[] values = AstronomyPlanetsGameType.values();
+            for (AstronomyPlanetsGameType planetsGameType : values) {
+                if (astronomyPreferencesManager.getLevelScore(planetsGameType)
+                        >= PlanetsUtil.getAllAvailableLevelsToPlay(allPlanets, planetsGameType).size()) {
+                    maxLevels++;
+                }
+            }
+            return getStarsBasedOnTotalLevels(maxLevels, values.length);
+        }
+        return 0;
+    }
+
+    private MyButton createCategButton(AstronomyGameType astronomyGameType) {
+        String labelText = SpecificPropertiesUtils.getText(astronomyGameType.levelName);
+        MyButton categBtn = new ImageButtonBuilder(astronomyGameType.buttonSkin, getAbstractScreen())
+                .textButtonWidth(GameButtonSize.ASTRONOMY_MENU_BUTTON.getWidth() * 1.4f)
+                .padBetweenImageAndText(1.3f)
+                .setFontScale(FontManager.getNormalFontDim())
                 .setFontColor(FontColor.BLACK)
                 .setFixedButtonSize(GameButtonSize.ASTRONOMY_MENU_BUTTON)
                 .setText(labelText)
@@ -146,14 +217,17 @@ public class AstronomyCampaignScreen extends AbstractScreen<AstronomyScreenManag
         categBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                CampaignLevelEnumService enumService = new CampaignLevelEnumService(campaignLevel);
-                QuestionConfig questionConfig = enumService.getQuestionConfig(AnatomyGameScreen.TOTAL_QUESTIONS);
-                AstronomyGame.getInstance().getScreenManager().showCampaignGameScreen(new GameContextService().createGameContext(questionConfig), campaignLevel);
+                if (astronomyGameType == AstronomyGameType.FIND_PLANET) {
+                    CampaignLevel planetsCampaignLevel = AstronomyCampaignLevelEnum.LEVEL_0_0;
+                    CampaignLevelEnumService enumService = new CampaignLevelEnumService(planetsCampaignLevel);
+                    QuestionConfig questionConfig = enumService.getQuestionConfig(NR_QUESTIONS_FIND_PLANET);
+                    getScreenManager().showCampaignGameScreen(new GameContextService().createGameContext(questionConfig), planetsCampaignLevel, astronomyGameType);
+                } else {
+                    getScreenManager().showDetailedCampaignScreen(astronomyGameType);
+                }
             }
         });
-        if (locked) {
-            categBtn.setDisabled(true);
-        }
+
         return categBtn;
     }
 

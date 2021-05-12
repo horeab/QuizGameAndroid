@@ -12,14 +12,14 @@ public class RGBColor {
     public static final RGBColor LIGHT_FUCHSIA = new RGBColor(1, 233, 160, 210);
     public static final RGBColor LIGHT_RED1 = new RGBColor(1, 255, 235, 230);
     public static final RGBColor LIGHT_RED2 = new RGBColor(1, 247, 111, 128);
-    public static final RGBColor RED = new RGBColor(1, 1, 0, 0);
+    public static final RGBColor RED = new RGBColor(1, 255, 0, 0);
     public static final RGBColor BLACK = new RGBColor(1, 0, 0, 0);
     public static final RGBColor GREY = new RGBColor(1, 192, 192, 192);
     public static final RGBColor DARK_GREEN = new RGBColor(1, 20, 140, 20);
     public static final RGBColor GREEN = new RGBColor(1, 0, 153, 0);
     public static final RGBColor WHITE = new RGBColor(1, 255, 255, 255);
-    public static final RGBColor LIGHT_GREEN = new RGBColor(1, 0, 1, 0);
-    public static final RGBColor YELLOW = new RGBColor(1, 1, 1, 0);
+    public static final RGBColor LIGHT_GREEN = new RGBColor(1, 102, 255, 102);
+    public static final RGBColor YELLOW = new RGBColor(1, 255, 255, 0);
 
 
     public float a;
@@ -51,6 +51,10 @@ public class RGBColor {
 
     public Color toColor() {
         return new Color(r / 255f, g / 255f, b / 255f, a);
+    }
+
+    public Color toColor(float alpha) {
+        return new Color(r / 255f, g / 255f, b / 255f, alpha);
     }
 
     public String toHexadecimal() {

@@ -15,11 +15,11 @@ import libgdx.controls.label.MyWrappedLabelConfigBuilder;
 import libgdx.game.Game;
 import libgdx.game.ScreenManager;
 import libgdx.graphics.GraphicUtils;
-import libgdx.skelgameimpl.skelgame.SkelGameRatingService;
 import libgdx.resources.FontManager;
 import libgdx.resources.Resource;
 import libgdx.resources.dimen.MainDimen;
 import libgdx.screen.AbstractScreen;
+import libgdx.skelgameimpl.skelgame.SkelGameRatingService;
 import libgdx.utils.ScreenDimensionsManager;
 
 public class MainMenuScreen extends AbstractScreen<ScreenManager> {

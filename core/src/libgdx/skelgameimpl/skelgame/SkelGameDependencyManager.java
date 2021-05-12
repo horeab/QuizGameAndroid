@@ -4,7 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import libgdx.campaign.*;
+import libgdx.campaign.CampaignGameDependencyManager;
+import libgdx.campaign.LettersCampaignLevelEnum;
+import libgdx.campaign.LettersQuestionCategoryEnum;
+import libgdx.campaign.LettersQuestionDifficultyLevel;
+import libgdx.campaign.QuestionCategory;
+import libgdx.campaign.QuestionConfigFileHandler;
+import libgdx.campaign.QuestionDifficulty;
+import libgdx.campaign.StarsService;
 import libgdx.resources.IncrementingRes;
 import libgdx.utils.EnumUtils;
 

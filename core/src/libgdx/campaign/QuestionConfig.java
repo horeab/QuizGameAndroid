@@ -1,8 +1,12 @@
 package libgdx.campaign;
 
-import libgdx.utils.EnumUtils;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
-import java.util.*;
+import libgdx.utils.EnumUtils;
 
 public class QuestionConfig {
 

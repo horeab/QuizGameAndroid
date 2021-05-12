@@ -16,6 +16,7 @@ public enum MainGameLabel implements GameLabel {
     pro_version_info,
     pro_version_info_unlock,
     pro_version_download,
+    pro_version_download_info,
     l_showanswers,
     l_correct_answer,
     l_your_answer,
@@ -59,6 +60,15 @@ public enum MainGameLabel implements GameLabel {
     l_easy,
     l_normal,
     l_difficult,
+
+    l_parental_gate_0_1,
+    l_parental_gate_0_2,
+    l_parental_gate_1_0,
+    l_parental_gate_1_2,
+    l_parental_gate_2_0,
+    l_parental_gate_2_1,
+    l_ask_parents,
+    l_verification_failed,
     ;
 
     @Override

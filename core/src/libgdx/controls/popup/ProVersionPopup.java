@@ -7,6 +7,7 @@ import libgdx.controls.button.ButtonBuilder;
 import libgdx.controls.button.MainButtonSize;
 import libgdx.controls.button.MyButton;
 import libgdx.controls.button.builders.ButtonWithIconBuilder;
+import libgdx.controls.label.MyWrappedLabel;
 import libgdx.game.Game;
 import libgdx.resources.FontManager;
 import libgdx.resources.MainResource;
@@ -18,8 +19,15 @@ import libgdx.utils.model.FontColor;
 
 public class ProVersionPopup extends MyPopup<AbstractScreen, AbstractScreenManager> {
 
+    private boolean withParentalGate;
+
     public ProVersionPopup(AbstractScreen abstractScreen) {
+        this(abstractScreen, false);
+    }
+
+    public ProVersionPopup(AbstractScreen abstractScreen, boolean withParentalGate) {
         super(abstractScreen);
+        this.withParentalGate = withParentalGate;
     }
 
     @Override
@@ -35,14 +43,35 @@ public class ProVersionPopup extends MyPopup<AbstractScreen, AbstractScreenManag
         button.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                InternetUtils.openAppUrl(Game.getInstance().getAppInfoService().getProVersionStoreAppId(), false);
+                Runnable toRun = new Runnable() {
+                    @Override
+                    public void run() {
+                        InternetUtils.openAppUrl(Game.getInstance().getAppInfoService().getProVersionStoreAppId(), false);
+                    }
+                };
+                if (withParentalGate) {
+                    hide();
+                    new ParentalGatePopup(getScreen(), toRun).addToPopupManager();
+                } else {
+                    toRun.run();
+                }
             }
         });
         addButton(button);
     }
 
     @Override
+    protected MyWrappedLabel getLabel() {
+        MyWrappedLabel label = super.getLabel();
+        if (label.getLabels().size() >= 3) {
+            label.getLabels().get(1).setFontScale(FontManager.calculateMultiplierStandardFontSize(2.1f));
+        }
+        return label;
+    }
+
+
+    @Override
     protected String getLabelText() {
-        return MainGameLabel.pro_version_info.getText(Game.getInstance().getAppInfoService().getAppName());
+        return MainGameLabel.pro_version_download_info.getText(Game.getInstance().getAppInfoService().getAppName());
     }
 }

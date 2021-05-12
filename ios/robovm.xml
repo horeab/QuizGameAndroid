@@ -21,7 +21,7 @@
       <skipPngCrush>true</skipPngCrush>
     </resource>
     <resource>
-      <directory>../android/assets/tournament_resources/implementations/countries</directory>
+      <directory>../android/assets/tournament_resources/implementations/history</directory>
       <includes>
         <include>**</include>
       </includes>

@@ -7,6 +7,17 @@ import libgdx.implementations.skelgame.GameIdEnum;
 
 public enum GameProperties {
 
+    skelgame(
+            GameIdEnum.history,
+            NSBundle.getMainBundle().getLocalizedString("language", "en", "InfoPlist"),
+            NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName", "en", "InfoPlist"),
+            "appId",
+            "bannerId",
+            "interId",
+            "rewardId",
+            "iosAppstoreId",
+            "proVersionStoreAppId"),
+
     geoquiz(
             GameIdEnum.quizgame,
             NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
@@ -136,7 +147,19 @@ public enum GameProperties {
             "ca-app-pub-9432399956064043/2256146024",
             "ca-app-pub-9432399956064043/8494251311",
             "1534612584",
-            "1534612584"),;
+            "1534612584"),
+
+    history(
+            GameIdEnum.history,
+            NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),
+            NSBundle.getMainBundle().getLocalizedString("CFBundleDisplayName","en","InfoPlist"),
+            "ca-app-pub-9432399956064043~9559920970",
+            "ca-app-pub-9432399956064043/8246839301",
+            "ca-app-pub-9432399956064043/9781420436",
+            "ca-app-pub-9432399956064043/7971329527",
+            "1534612693",
+            "1534612693"),
+    ;
 
     private GameIdEnum gameIdEnum;
     private String language;

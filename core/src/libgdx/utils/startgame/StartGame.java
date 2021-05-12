@@ -14,7 +14,7 @@ public class StartGame {
     private static final Pair<Integer, Integer> t = new ImmutablePair<>(853, 480);
     private static final Pair<Integer, Integer> s = new ImmutablePair<>(480, 853);
     private static final Pair<Integer, Integer> a = new ImmutablePair<>(853, 1480);
-    private static final Pair<Integer, Integer> d = new ImmutablePair<>(2125, 3436);
+    private static final Pair<Integer, Integer> d = new ImmutablePair<>(1242, 2208);
     private static final Pair<Integer, Integer> x = new ImmutablePair<>(700, 300);
     private static final Pair<Integer, Integer> z = new ImmutablePair<>(1500, 1500);
 
