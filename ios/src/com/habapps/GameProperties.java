@@ -68,8 +68,8 @@ public enum GameProperties {
             "ca-app-pub-9432399956064043/3938149317",
             "ca-app-pub-9432399956064043/1892733617",
             "ca-app-pub-9432399956064043/9870817051",
-            "1486431352",
-            "1486431352"),
+            "1486431245",
+            "1486431245"),
     paintings(
             GameIdEnum.paintings,
             NSBundle.getMainBundle().getLocalizedString("language","en","InfoPlist"),

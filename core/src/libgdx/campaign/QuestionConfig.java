@@ -1,12 +1,8 @@
 package libgdx.campaign;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
 import libgdx.utils.EnumUtils;
+
+import java.util.*;
 
 public class QuestionConfig {
 
@@ -37,12 +33,12 @@ public class QuestionConfig {
         this(Collections.singletonList(questionDifficulty), new ArrayList<QuestionCategory>(Arrays.asList(EnumUtils.getValues(CampaignGame.getInstance().getSubGameDependencyManager().getQuestionCategoryTypeEnum()))), amountOfQuestions);
     }
 
-    public QuestionConfig(QuestionDifficulty QuestionDifficulty, QuestionCategory questionCategory) {
-        this(Collections.singletonList(QuestionDifficulty), Collections.singletonList(questionCategory));
+    public QuestionConfig(QuestionDifficulty questionDifficulty, QuestionCategory questionCategory) {
+        this(Collections.singletonList(questionDifficulty), Collections.singletonList(questionCategory));
     }
 
-    public QuestionConfig(QuestionDifficulty QuestionDifficulty, QuestionCategory questionCategory, int amount) {
-        this(Collections.singletonList(QuestionDifficulty), Collections.singletonList(questionCategory), amount);
+    public QuestionConfig(QuestionDifficulty questionDifficulty, QuestionCategory questionCategory, int amount) {
+        this(Collections.singletonList(questionDifficulty), Collections.singletonList(questionCategory), amount);
     }
 
     public QuestionConfig(List<QuestionCategory> questionCategory) {
@@ -57,8 +53,8 @@ public class QuestionConfig {
         this(questionDifficulty, questionCategory, 1);
     }
 
-    public QuestionConfig(QuestionDifficulty QuestionDifficulty, List<QuestionCategory> questionCategory, int amount) {
-        this(Collections.singletonList(QuestionDifficulty), questionCategory, amount);
+    public QuestionConfig(QuestionDifficulty questionDifficulty, List<QuestionCategory> questionCategory, int amount) {
+        this(Collections.singletonList(questionDifficulty), questionCategory, amount);
     }
 
     private QuestionConfig(List<QuestionDifficulty> questionDifficulty, List<QuestionCategory> questionCategory, int amount) {

@@ -5,6 +5,9 @@ import java.util.List;
 import libgdx.game.SubGameDependencyManager;
 import libgdx.resources.IncrementingRes;
 import libgdx.resources.SpecificResource;
+import libgdx.resources.gamelabel.GameLabel;
+import libgdx.resources.gamelabel.MainGameLabel;
+import libgdx.skelgameimpl.skelgame.SkelGameLabel;
 
 public abstract class CampaignGameDependencyManager extends SubGameDependencyManager {
 
@@ -18,8 +21,17 @@ public abstract class CampaignGameDependencyManager extends SubGameDependencyMan
 
     public abstract <T extends Enum<T> & QuestionDifficulty> Class<T> getQuestionDifficultyTypeEnum();
 
-    public QuestionConfigFileHandler getQuestionConfigFileHandler(){
+    public QuestionConfigFileHandler getQuestionConfigFileHandler() {
         return new QuestionConfigFileHandler();
     }
 
+    @Override
+    public String getAllFontChars() {
+        String allChars = super.getAllFontChars();
+        StringBuilder labels = new StringBuilder();
+        for (GameLabel label : SkelGameLabel.values()) {
+            labels.append(label.getText());
+        }
+        return allChars + labels.toString();
+    }
 }

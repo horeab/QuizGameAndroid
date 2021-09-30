@@ -1,0 +1,6 @@
+0::Sfera niebieska:1,3,5:0
+1::Zegar słoneczny:0,2,4:1
+2::Teleskop:3,4,0:2
+3::Zegar astronomiczny:1,2,0:3
+4::Fotometr:5,1,2:4
+5::Teleskop kosmiczny:4,1,0:5

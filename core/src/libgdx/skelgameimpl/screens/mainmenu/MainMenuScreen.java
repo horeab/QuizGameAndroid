@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
-
 import libgdx.controls.animations.ActorAnimation;
 import libgdx.controls.button.MyButton;
 import libgdx.controls.button.builders.BackButtonBuilder;
@@ -40,19 +39,19 @@ public class MainMenuScreen extends AbstractScreen<ScreenManager> {
         table.setFillParent(true);
         addTitle(table);
         MyButton startGameBtn = createStartGameBtn();
-        table.add(startGameBtn).height(ScreenDimensionsManager.getScreenHeightValue(13)).width(ScreenDimensionsManager.getScreenWidthValue(70)).padTop(verticalGeneralMarginDimen * 4).row();
+        table.add(startGameBtn).height(ScreenDimensionsManager.getScreenHeight(13)).width(ScreenDimensionsManager.getScreenWidth(70)).padTop(verticalGeneralMarginDimen * 4).row();
         table.add().padTop(verticalGeneralMarginDimen * 17);
         addActor(table);
     }
 
     private void addTitle(Table table) {
         Image titleRaysImage = GraphicUtils.getImage(Resource.title_rays);
-        new ActorAnimation(titleRaysImage, this).animateFastFadeInFadeOut();
+        new ActorAnimation(this).animateFastFadeInFadeOut(titleRaysImage);
         float titleWidth = ScreenDimensionsManager.getScreenWidth();
         float titleHeight = ScreenDimensionsManager.getNewHeightForNewWidth(titleWidth, titleRaysImage.getWidth(), titleRaysImage.getHeight());
         titleRaysImage.setWidth(titleWidth);
         titleRaysImage.setHeight(titleHeight);
-        titleRaysImage.setY(ScreenDimensionsManager.getScreenHeightValue(49));
+        titleRaysImage.setY(ScreenDimensionsManager.getScreenHeight(49));
         addActor(titleRaysImage);
         Stack titleLabel = createTitleLabel();
         table.add(titleLabel)

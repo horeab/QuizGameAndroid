@@ -1,8 +1,9 @@
 package libgdx.resources;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.utils.I18NBundle;
 
+import com.badlogic.gdx.utils.I18NBundle;
 import libgdx.game.Game;
 
 public enum Resource implements Res {

@@ -4,6 +4,7 @@ package libgdx.implementations.skelgame;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 import libgdx.graphics.GraphicUtils;
+import libgdx.implementations.anatomy.AnatomySpecificResource;
 import libgdx.implementations.astronomy.AstronomySpecificResource;
 import libgdx.implementations.conthistory.ConthistorySpecificResource;
 import libgdx.implementations.countries.CountriesSpecificResource;
@@ -46,6 +47,7 @@ public enum GameButtonSkin implements libgdx.controls.button.ButtonSkin {
     SQUARE_WRONG(HangmanSpecificResource.btn_hangman_wrong, HangmanSpecificResource.btn_hangman_wrong, HangmanSpecificResource.btn_hangman_wrong, HangmanSpecificResource.btn_hangman_wrong, null),
 
     ANSWER_IMAGE_CLICK(QuizGameSpecificResource.btn_question_up, QuizGameSpecificResource.btn_question_down, QuizGameSpecificResource.btn_question_up, QuizGameSpecificResource.btn_question_disabled, null),
+    ANSWER_IMAGE_EXACT_ANSWER_CLICK(QuizGameSpecificResource.btn_question_exact_answer_up, QuizGameSpecificResource.btn_question_exact_answer_down, QuizGameSpecificResource.btn_question_exact_answer_up, QuizGameSpecificResource.btn_question_disabled, null),
     ANSWER_IMAGE_CLICK_CORRECT(QuizGameSpecificResource.btn_question_correct, QuizGameSpecificResource.btn_question_correct, QuizGameSpecificResource.btn_question_correct, QuizGameSpecificResource.btn_question_correct, FontColor.GREEN),
     ANSWER_IMAGE_CLICK_WRONG(QuizGameSpecificResource.btn_question_wrong, QuizGameSpecificResource.btn_question_wrong, QuizGameSpecificResource.btn_question_wrong, QuizGameSpecificResource.btn_question_wrong, FontColor.RED),
 
@@ -63,6 +65,9 @@ public enum GameButtonSkin implements libgdx.controls.button.ButtonSkin {
 
     PAINTINGS_COLOR_CATEG_FINISHED(PaintingsSpecificResource.btn_categ_finished, PaintingsSpecificResource.btn_categ_down, PaintingsSpecificResource.btn_categ_finished, PaintingsSpecificResource.btn_categ_disabled, null),
     PAINTINGS_COLOR_CATEG_STAR(PaintingsSpecificResource.btn_categ_star, PaintingsSpecificResource.btn_categ_down, PaintingsSpecificResource.btn_categ_star, PaintingsSpecificResource.btn_categ_disabled, null),
+
+    ANATOMY_IDENTIFY(AnatomySpecificResource.btn_identify_up, AnatomySpecificResource.btn_identify_down, AnatomySpecificResource.btn_identify_up, AnatomySpecificResource.btn_identify_up, null),
+    ANATOMY_GENERALK(AnatomySpecificResource.btn_generalk_up, AnatomySpecificResource.btn_generalk_down, AnatomySpecificResource.btn_generalk_up, AnatomySpecificResource.btn_generalk_up, null),
 
     ASTRONOMY_GAME_TYPE_FIND_PLANET(AstronomySpecificResource.campaign_level_0_0, AstronomySpecificResource.campaign_level_0_0_pressed, AstronomySpecificResource.campaign_level_0_0, AstronomySpecificResource.campaign_level_0_0, null),
     ASTRONOMY_GAME_TYPE_SOLAR_SYSTEM(AstronomySpecificResource.game_type_solar_system, AstronomySpecificResource.game_type_solar_system_pressed, AstronomySpecificResource.game_type_solar_system, AstronomySpecificResource.game_type_solar_system, null),

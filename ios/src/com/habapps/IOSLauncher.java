@@ -21,7 +21,7 @@ import org.robovm.pods.google.mobileads.GADInterstitialDelegateAdapter;
 import org.robovm.pods.google.mobileads.GADRequest;
 import org.robovm.pods.google.mobileads.GADRequestError;
 
-import libgdx.implementations.history.HistoryGame;
+import libgdx.implementations.anatomy.AnatomyGame;
 import libgdx.utils.Utils;
 
 public class IOSLauncher extends IOSApplication.Delegate {
@@ -29,8 +29,8 @@ public class IOSLauncher extends IOSApplication.Delegate {
 
     private boolean adsInitialized = false;
 
-    private GameProperties gameProperties = GameProperties.history;
-    private HistoryGame game;
+    private GameProperties gameProperties = GameProperties.anatomy;
+    private AnatomyGame game;
 
     private GADBannerView bannerAdview;
     private GADInterstitial interstitialAd;
@@ -46,7 +46,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
         config.orientationLandscape = !appInfoService.isPortraitMode();
         config.orientationPortrait = appInfoService.isPortraitMode();
 
-        game = new HistoryGame(
+        game = new AnatomyGame(
                 appInfoService);
         game.purchaseManager = new PurchaseManageriOSApple();
 

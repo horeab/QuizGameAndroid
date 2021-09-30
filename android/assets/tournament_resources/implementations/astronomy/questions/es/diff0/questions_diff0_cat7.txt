@@ -1,0 +1,6 @@
+0::Esfera celeste:1,3,5:0
+1::Reloj de sol:0,2,4:1
+2::Telescopio:3,4,0:2
+3::Reloj astronómico:1,2,0:3
+4::Fotómetro:5,1,2:4
+5::Observatorio espacial:4,1,0:5

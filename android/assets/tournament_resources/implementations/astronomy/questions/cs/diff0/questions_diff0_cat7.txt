@@ -1,0 +1,6 @@
+0::Nebeská sféra:1,3,5:0
+1::Sluneční hodiny:0,2,4:1
+2::Dalekohled:3,4,0:2
+3::Orloj:1,2,0:3
+4::Luxmetr:5,1,2:4
+5::Vesmírný dalekohled:4,1,0:5

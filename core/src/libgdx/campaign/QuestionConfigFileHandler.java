@@ -16,6 +16,9 @@ public class QuestionConfigFileHandler {
         return getInternalFile(difficultyLevelToCreate, categoryEnumToCreate).readString();
     }
 
+    /**
+     * tournament_resources/implementations/gamid/{path param}
+     */
     public String getFileText(String path) {
         return Gdx.files.internal(Game.getInstance().getAppInfoService().getImplementationGameResourcesFolder() + path).readString();
     }

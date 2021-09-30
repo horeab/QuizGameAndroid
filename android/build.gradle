@@ -125,8 +125,8 @@ android {
 /////////////////////////////////////////////////////////////////////////////
         geoquiz {
             applicationIdSuffix ".geoquiz"
-            versionCode 2
-            versionName "1.1"
+            versionCode 4
+            versionName "1.21"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/geoquiz_icon"]
         }
@@ -141,8 +141,8 @@ android {
 /////////////////////////////////////////////////////////////////////////////
         hangman {
             applicationIdSuffix ".hangman"
-            versionCode 7
-            versionName "1.6"
+            versionCode 8
+            versionName "1.7"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/hangman_icon"]
         }
@@ -205,16 +205,16 @@ android {
 /////////////////////////////////////////////////////////////////////////////
         anatomy {
             applicationIdSuffix ".anatomy"
-            versionCode 1
-            versionName "1.00"
+            versionCode 2
+            versionName "1.1"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/anatomy_icon"]
         }
 /////////////////////////////////////////////////////////////////////////////
         anatomyPro {
             applicationIdSuffix ".anatomypro"
-            versionCode 1
-            versionName "1.00"
+            versionCode 2
+            versionName "1.1"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/anatomypro_icon"]
         }
@@ -253,8 +253,8 @@ android {
 /////////////////////////////////////////////////////////////////////////////
         astronomyPro {
             applicationIdSuffix ".astronomypro"
-            versionCode 2
-            versionName "1.1"
+            versionCode 3
+            versionName "1.2"
             dimension "game"
             manifestPlaceholders = [appIcon: "@drawable/astronomypro_icon"]
         }

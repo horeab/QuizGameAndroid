@@ -2,12 +2,14 @@ package libgdx.skelgameimpl.skelgame;
 
 import libgdx.game.Game;
 import libgdx.resources.gamelabel.GameLabelUtils;
+import libgdx.resources.gamelabel.SpecificPropertiesUtils;
 
 public enum SkelGameLabel implements libgdx.resources.gamelabel.GameLabel {
 
     level_finished,
     level_failed,
     game_finished,
+    l_game_finished,
     go_back,
     next_level,
     play_again,
@@ -22,7 +24,11 @@ public enum SkelGameLabel implements libgdx.resources.gamelabel.GameLabel {
     l_empty,
     l_reachbudget,
     l_highscorebudget,
-    ;
+    l_sell,
+    l_wood,
+    l_iron,
+    l_gold,
+    l_diamond,;
 
     @Override
     public String getText(Object... params) {

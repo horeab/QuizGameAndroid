@@ -5,16 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import libgdx.campaign.CampaignLevel;
 import libgdx.campaign.CampaignService;
 import libgdx.controls.button.builders.BackButtonBuilder;
-import libgdx.dbapi.GameStatsDbApiService;
-import libgdx.game.Game;
 import libgdx.implementations.geoquiz.QuizGame;
+import libgdx.implementations.screens.GameScreen;
 import libgdx.implementations.skelgame.gameservice.GameContext;
 import libgdx.implementations.skelgame.gameservice.LevelFinishedService;
 import libgdx.implementations.skelgame.gameservice.QuestionContainerCreatorService;
 import libgdx.implementations.skelgame.gameservice.SinglePlayerLevelFinishedService;
 import libgdx.implementations.skelgame.question.GameUser;
-import libgdx.implementations.screens.GameScreen;
-import libgdx.utils.DateUtils;
 import libgdx.utils.ScreenDimensionsManager;
 import libgdx.utils.Utils;
 import libgdx.utils.model.RGBColor;
@@ -36,18 +33,15 @@ public class CampaignGameScreen extends GameScreen<QuizScreenManager> {
     }
 
     private void createAllTable() {
-        if (Game.getInstance().getCurrentUser() != null) {
-            new GameStatsDbApiService().incrementGameStatsQuestionsWon(Game.getInstance().getCurrentUser().getId(), Long.valueOf(DateUtils.getNowMillis()).toString());
-        }
 
         allTable = new Table();
         QuestionContainerCreatorService questionContainerCreatorService = gameContext.getCurrentUserCreatorDependencies().getQuestionContainerCreatorService(gameContext, this);
         Table questionTable = questionContainerCreatorService.createQuestionTable();
         Table answersTable = questionContainerCreatorService.createAnswerOptionsTable();
         Table headerTable = new HeaderCreator().createHeaderTable(gameContext);
-        headerTable.setHeight(ScreenDimensionsManager.getScreenHeightValue(5));
-        questionTable.setHeight(ScreenDimensionsManager.getScreenHeightValue(45));
-        answersTable.setHeight(ScreenDimensionsManager.getScreenHeightValue(50));
+        headerTable.setHeight(ScreenDimensionsManager.getScreenHeight(5));
+        questionTable.setHeight(ScreenDimensionsManager.getScreenHeight(45));
+        answersTable.setHeight(ScreenDimensionsManager.getScreenHeight(50));
         allTable.add(headerTable).height(headerTable.getHeight()).row();
         allTable.add(questionTable).height(questionTable.getHeight()).row();
         allTable.add(answersTable).height(answersTable.getHeight());
@@ -72,7 +66,7 @@ public class CampaignGameScreen extends GameScreen<QuizScreenManager> {
     }
 
     @Override
-    protected void setBackgroundColor(RGBColor backgroundColor) {
+    public void setBackgroundColor(RGBColor backgroundColor) {
         if (levelFinishedService.isGameWon(gameContext.getCurrentUserGameUser())) {
             super.setBackgroundColor(RGBColor.RED);
         } else {
